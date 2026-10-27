@@ -1,23 +1,22 @@
 import articles from "../assets/images/articles-blog.png";
-import prayers from "../assets/images/prayers-times-app.png";
-import weather from "../assets/images/weather-app.png";
 import whatsapp from "../assets/images/whatsapp-clone.png";
 import carpentry from "../assets/images/carpentry-agency.png";
 import rennello from "../assets/images/rennello.png";
 import zmovie from "../assets/images/sa3ed-zmovie.png";
 
-// To add a project: import its image above, then add an object to this array.
 const projectsList = [
   {
     title: "Rennello Platform",
     src: rennello,
     url: "https://rennello.netlify.app",
     tags: ["React", "Redux", "Tailwind", "MUI"],
-    description: `4th-year project (team of 6) - a platform connecting customers with local service workshops, with full RBAC for customers, workshop owners, and admins. My contribution as Frontend Developer:
-- Built the main homepage and the complete registration & login flow, including all related sub-pages,
-- Developed the entire user (customer) route/flow across the platform,
-- Built the request-details pages for both customers and workshop owners, covering status tracking (pending, approved, active, complete),
-- Built the "My Workshop" management page for workshop owners.
+    description: `4th-year project (team of 6) 
+    - a platform connecting customers with local service workshops, with full RBAC for customers, workshop owners, and admins.
+    My contribution as Frontend Developer:
+    - Built the main homepage and the complete registration & login flow, including all related sub-pages,
+    - Developed the entire user (customer) route/flow across the platform,
+    - Built the request-details pages for both customers and workshop owners, covering status tracking (pending, approved, active, complete),
+    - Built the "My Workshop" management page for workshop owners.
 Tech stack: React.js, Redux, TailwindCSS, Material-UI, Framer Motion (frontend) - Laravel & MySQL (backend, by teammates).`,
   },
   {
@@ -59,24 +58,8 @@ Tech stack: React.js, CSS, Material-UI, Local Storage.`,
     src: articles,
     url: "https://sa3ed-articles-blog-project.netlify.app",
     tags: ["React", "Styled Components"],
-    description:
-      "A responsive blog website built with React.js and styled-components. It features a clean interface, dynamic content, and a seamless user experience.",
-  },
-  {
-    title: "Prayers Times",
-    src: prayers,
-    url: "https://sa3ed-prayers-times-project.netlify.app",
-    tags: ["React", "Styled Components"],
-    description:
-      "A responsive app for displaying prayer times, built with React.js and styled-components. It features a clean interface, real-time updates, and a seamless user experience.",
-  },
-  {
-    title: "Weather App",
-    src: weather,
-    url: "https://sa3ed-weather-project.netlify.app",
-    tags: ["React", "Styled Components"],
-    description:
-      "A modern weather app built with React.js and styled-components. It features a responsive design, real-time weather data, and an intuitive user interface.",
+    description: `A responsive blog website built with React.js and styled-components.
+       It features a clean interface, dynamic content, and a seamless user experience.`,
   },
 ];
 
