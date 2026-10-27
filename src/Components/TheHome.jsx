@@ -1,5 +1,5 @@
 import SocialLinks from "./SocialLinks";
-import MyProfile from "../assets/images/Me.jpg";
+import MyProfile from "../assets/images/profile.png";
 import myCV from "../assets/Sa3ed-CV.pdf";
 
 const techStack = ["React", "Tailwind", "Firebase", "Redux", "MUI"];
