@@ -7,7 +7,7 @@ const techStack = ["React", "Tailwind", "Firebase", "Redux", "MUI"];
 const TheHome = () => {
   return (
     <div
-      className="the-home overflow-hidden relative flex items-center justify-evenly gap-5 px-8 py-16"
+      className="the-home overflow-hidden relative flex items-center justify-evenly gap-7 px-8 py-16"
       id="Home"
     >
       <div className="bio text-white gap-2 relative">
