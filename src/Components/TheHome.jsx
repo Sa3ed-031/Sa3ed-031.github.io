@@ -1,8 +1,29 @@
 import SocialLinks from "./SocialLinks";
-import MyProfile from "../assets/images/profile.png";
+import MyProfile from "../assets/images/profile.jpg";
 import myCV from "../assets/Sa3ed-CV.pdf";
 
-const techStack = ["React", "Tailwind", "Firebase", "Redux", "MUI"];
+const techStack = [
+  "React",
+  "Tailwind",
+  "Firebase",
+  "axios",
+  "Redux",
+  "emailjs",
+  "MUI",
+];
+
+// const techStack2 = [
+//   {},
+//   {},
+//   {},
+//   "React",
+//   "Tailwind",
+//   "Firebase",
+//   "axios",
+//   "Redux",
+//   "emailjs",
+//   "MUI",
+// ];
 
 const TheHome = () => {
   return (

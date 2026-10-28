@@ -79,8 +79,8 @@ h1 {
 
     .the-home .btn,
     .the-contact .btn {
-      font-size: 1.1rem;
-      padding: 0.8rem 1.4rem;
+      font-size: 1rem;
+      padding: 0.6rem 1.3rem;
       cursor: pointer;
       font-weight: bold;
       color: var(--main-color-light);
