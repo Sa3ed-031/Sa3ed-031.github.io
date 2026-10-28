@@ -25,13 +25,13 @@ My personal portfolio: a fast, responsive React site that presents my services a
 | Routing       | React Router 7                              |
 | Contact form  | EmailJS (`@emailjs/browser`)                |
 | Linting       | ESLint 9                                    |
-| Hosting       | Netlify                                     |
+| Hosting       | GitHub Pages (GitHub Actions)                                     |
 
 ## Getting Started
 
 ```bash
-git clone https://github.com/Sa3ed-031/sa3ed-portfolio.git
-cd sa3ed-portfolio
+git clone https://github.com/Sa3ed-031/Sa3ed-031.github.io.git
+cd Sa3ed-031.github.io
 npm install
 npm run dev
 ```
