@@ -27,7 +27,7 @@ const SocialLinks = () => {
           rel="noopener noreferrer"
           aria-label={link.name}
           title={link.name}
-          className="icon-btn flex items-center justify-center w-[2.8rem] h-[2.8rem] rounded-[1.4rem]"
+          className="icon-btn flex items-center justify-center w-10 h-10 rounded-full"
         >
           <link.Icon className="icon" />
         </a>
