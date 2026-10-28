@@ -2,7 +2,7 @@
 
 My personal portfolio: a fast, responsive React site that presents my services and projects, with a working contact form.
 
-[![Live Demo](https://img.shields.io/badge/Live_Demo-sa3ed--portfolio.netlify.app-4f39f6?style=for-the-badge&logo=netlify&logoColor=white)](https://sa3ed-portfolio.netlify.app)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-sa3ed--portfolio.netlify.app-4f39f6?style=for-the-badge&logo=netlify&logoColor=white)](https://sa3ed-031.github.io)
 
 <img src="./public/preview.png" width="800" alt="Portfolio preview" />
 
