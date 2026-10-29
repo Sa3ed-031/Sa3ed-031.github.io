@@ -26,6 +26,12 @@
   transition: var(--main-duration);
 }
 
+/* Motion drives these elements itself, a CSS transition would make it lag */
+.reveal,
+.motion-card {
+  transition: none;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -60,6 +66,8 @@ h1 {
 
   .the-portfolio-container {
     transition: all var(--main-duration) ease-in-out;
+    /* Keeps the reveal offsets from causing horizontal scrolling */
+    overflow-x: clip;
 
     .section-container {
       padding: 3rem 2rem 2rem;
@@ -233,9 +241,7 @@ h1 {
           .timeline-dot {
             background-color: var(--main-color);
             box-shadow: 0 0 25px var(--main-color), 0 0 50px var(--main-color);
-            /* To Uncomment this Must also Uncomment the one in the [even] items. */
             left: calc(50% - 20px);
-            /* left: calc(50% - 15px); */
           }
 
           .timeline-date {
@@ -258,10 +264,6 @@ h1 {
             box-shadow: 0 0 25px var(--main-color);
           }
         }
-
-        /* .timeline-item:last-child {
-          margin-bottom: 0;
-        } */
 
         .timeline-item:nth-child(odd) {
           padding-right: calc(50% + 30px);
@@ -294,13 +296,16 @@ h1 {
       flex-wrap: wrap;
       justify-content: center;
 
-      .project-box,
       .service-box {
         width: 40%;
         padding: 2rem;
         cursor: pointer;
         color: var(--almost-white);
         transition: all var(--main-duration) ease-in-out;
+        display: flex;
+        gap: 1rem;
+        flex-direction: column;
+        justify-content: space-between;
 
         h4 {
           font-size: 1.8rem;
@@ -313,14 +318,6 @@ h1 {
           line-height: 1.6;
         }
       }
-
-      .service-box,
-      .project-box .face {
-        display: flex;
-        gap: 1rem;
-        flex-direction: column;
-        justify-content: space-between;
-      }
     }
 
     .the-services {
@@ -329,8 +326,8 @@ h1 {
           background-color: var(--main-color);
         }
 
-        .service-box:nth-child(2),
-        .service-box:nth-child(3) {
+        .reveal:nth-child(2) .service-box,
+        .reveal:nth-child(3) .service-box {
           background-color: var(--color-gray-800);
           border-color: var(--main-color);
         }
@@ -341,89 +338,149 @@ h1 {
       }
     }
 
+    .the-skills {
+      .skill-group {
+        border: 0.2rem solid var(--main-color);
+        background-color: var(--color-gray-800);
+        box-shadow: 0 0 10px var(--main-color);
+      }
+
+      .skill-group:hover {
+        box-shadow: 0 0 25px var(--main-color);
+      }
+
+      .skill-chips li {
+        padding: 0.3em 0.9em;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--main-color-light);
+        border: 1px solid rgba(165, 155, 255, 0.45);
+        border-radius: 999px;
+        background-color: rgba(57, 49, 212, 0.18);
+      }
+
+      .learning-badge {
+        padding: 0 0.5em;
+        font-size: 0.7rem;
+        line-height: 1.5;
+        color: var(--main-color-light);
+        border: 1px solid var(--main-color-light);
+        border-radius: 999px;
+      }
+    }
+
     .the-projects {
       background-color: var(--color-gray-800);
 
-      .projects-container {
-        .project-box {
-          width: 30%;
-          padding: 0;
-          perspective: 400px;
-          border-radius: var(--main-border-radius);
+      .type-filter {
+        border: 2px solid var(--main-color);
+        border-radius: 999px;
+        overflow: hidden;
+      }
 
-          .box {
-            height: 21rem;
-            transition: transform 0.6s;
-            transform-origin: right center;
-            background-color: var(--color-gray-900);
+      .filter-btn,
+      .filter-chip,
+      .clear-btn {
+        font-weight: 600;
+        cursor: pointer;
+        color: var(--main-color-light);
+      }
 
-            .face {
-              width: 100%;
-              height: 100%;
+      .filter-btn {
+        padding: 0.5rem 1.2rem;
+      }
 
-              padding: 1.5rem;
-              position: absolute;
-              top: 0;
-              left: 0;
-              transition: 1s;
-              justify-content: center;
-              backface-visibility: hidden;
-              backdrop-filter: blur(3rem);
-              -webkit-backdrop-filter: blur(3rem);
-            }
+      .filter-btn+.filter-btn {
+        border-left: 2px solid var(--main-color);
+      }
 
-            .face.front {
-              padding: 0;
-              justify-content: space-between;
+      .filter-chip {
+        padding: 0.25rem 0.9rem;
+        font-size: 0.9rem;
+        border: 1px solid rgba(165, 155, 255, 0.45);
+        border-radius: 999px;
+      }
 
-              .project-preview {
-                a {
-                  background-color: var(--main-color);
-                  border-radius: var(--main-border-radius);
-                  transition: all var(--main-duration) ease-in-out;
-                }
+      .filter-btn:hover,
+      .filter-chip:hover {
+        background-color: rgba(79, 57, 246, 0.25);
+      }
 
-                a:hover {
-                  transform: scale(1.03);
-                }
-              }
+      .filter-btn.active,
+      .filter-chip.active {
+        color: #fff;
+        background-color: #4f39f6;
+        border-color: #4f39f6;
+      }
 
-              .project-preview:hover {
-                img {
-                  background-blend-mode: soft-light;
-                  filter: brightness(0.5);
-                }
+      .clear-btn {
+        padding: 0.25rem 0.9rem;
+        font-size: 0.9rem;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+      }
 
-                a {
-                  display: flex;
-                }
-              }
+      .clear-btn:hover {
+        color: var(--almost-white);
+      }
 
-              .project-tags li {
-                padding: 0.15rem 0.6rem;
-                font-size: 0.75rem;
-                font-weight: 600;
-                color: var(--main-color-light);
-                border: 1px solid rgba(165, 155, 255, 0.4);
-                border-radius: 999px;
-              }
-            }
+      .project-card {
+        border: 0.2rem solid var(--main-color);
+        background-color: var(--color-gray-900);
+        box-shadow: 0 0 10px var(--main-color);
 
-            .face.back {
-              justify-content: space-between;
-              transform: rotateY(180deg);
-            }
-          }
-
-          .box.rotate {
-            transform: translateX(-100%) rotateY(-180deg);
-          }
+        .project-preview img {
+          transition: transform var(--main-duration) ease-out;
         }
 
-        .project-box:hover {
-          transform: scale(1.03);
+        .type-badge {
+          padding: 0.15rem 0.7rem;
+          font-size: 0.8rem;
+          font-weight: 700;
+          color: var(--almost-white);
+          border-radius: 999px;
+          background-color: var(--main-color);
         }
 
+        .project-tags li {
+          padding: 0.15rem 0.6rem;
+          font-size: 0.75rem;
+          font-weight: 600;
+          color: var(--main-color-light);
+          border: 1px solid rgba(165, 155, 255, 0.4);
+          border-radius: 999px;
+        }
+
+        .details-toggle {
+          cursor: pointer;
+        }
+
+        .highlights:not([hidden]) {
+          display: flex;
+        }
+
+        .card-btn {
+          padding: 0.45rem 1.1rem;
+          font-weight: 700;
+          color: var(--main-color-light);
+          border: 2px solid var(--main-color);
+          border-radius: 999px;
+        }
+
+        .card-btn.primary,
+        .card-btn:hover {
+          color: #fff;
+          background-color: #4f39f6;
+          border-color: #4f39f6;
+        }
+      }
+
+      .project-card:hover {
+        box-shadow: 0 0 25px var(--main-color);
+
+        .project-preview img {
+          transform: scale(1.05);
+        }
       }
     }
 
@@ -652,7 +709,6 @@ h1 {
 
     .projects-services .projects-services-container {
 
-      .project-box .box .face,
       .service-box {
         width: 30%;
 
@@ -669,25 +725,11 @@ h1 {
         }
       }
 
-      .project-box {
-        width: 30%;
-
-        .box {
-          height: 43vh;
-
-          .face {
-            width: 100%;
-            gap: 2rem;
-            justify-content: space-between;
-          }
-        }
-      }
-
-      .service-box:nth-child(odd) {
+      .reveal:nth-child(odd) .service-box {
         background-color: var(--main-color);
       }
 
-      .service-box:nth-child(even) {
+      .reveal:nth-child(even) .service-box {
         background-color: var(--color-gray-800);
       }
     }
@@ -760,7 +802,6 @@ h1 {
 
     .projects-services .projects-services-container {
 
-      .project-box,
       .service-box {
         width: 23.7%;
       }
@@ -773,26 +814,6 @@ h1 {
     .projects-services .projects-services-container {
       .service-box {
         width: 24%;
-      }
-
-      .project-box {
-        width: 18.9%;
-      }
-    }
-  }
-}
-
-@media(max-width:1068px) {
-  #root .the-portfolio-container {
-    .the-projects .projects-container {
-      gap: 1rem;
-
-      .project-box {
-        width: 40%;
-
-        .box {
-          height: 19rem;
-        }
       }
     }
   }
@@ -809,10 +830,6 @@ h1 {
       .profile {
         width: 55%;
       }
-    }
-
-    .the-projects .projects-container .project-box {
-      width: calc(50% - 0.5rem);
     }
   }
 }
@@ -872,8 +889,7 @@ h1 {
 
     .projects-services .projects-services-container {
 
-      .service-box,
-      .project-box .box .face {
+      .service-box {
 
         h4 {
           font-size: 1.6rem;
@@ -883,10 +899,6 @@ h1 {
           font-size: 1rem;
         }
 
-      }
-
-      .project-box .box {
-        height: 18rem;
       }
     }
 
@@ -1028,27 +1040,16 @@ h1 {
 
     .projects-services .projects-services-container {
 
-      .service-box,
-      .project-box {
+      .service-box {
         width: 96%;
       }
 
-      .service-box:nth-child(odd) {
+      .reveal:nth-child(odd) .service-box {
         background-color: var(--main-color);
       }
 
-      .service-box:nth-child(even) {
+      .reveal:nth-child(even) .service-box {
         background-color: var(--color-gray-800);
-      }
-
-      .project-box {
-        .box {
-          height: 21rem;
-
-          .front .project-preview {
-            height: 60%;
-          }
-        }
       }
     }
 
@@ -1155,9 +1156,9 @@ h1 {
 
     .projects-services .projects-services-container {
 
-      .project-box .box .face,
       .service-box {
         width: 90%;
+        padding: 1.5rem;
 
         h4 {
           font-size: 1.4rem;
@@ -1165,29 +1166,6 @@ h1 {
 
         p {
           font-size: 0.95rem;
-        }
-      }
-
-      .service-box {
-        padding: 1.5rem;
-      }
-
-      .project-box {
-        width: 90%;
-
-        .box {
-
-          .face {
-            width: 100%;
-          }
-
-          .front {
-            gap: 0;
-
-            .project-info {
-              height: auto;
-            }
-          }
         }
       }
     }
@@ -1251,14 +1229,6 @@ h1 {
         }
       }
 
-    }
-
-    .the-projects .projects-container .project-box .box {
-      height: 16.5rem;
-
-      .front {
-        gap: 0;
-      }
     }
 
     .the-footer {
@@ -1332,17 +1302,6 @@ h1 {
   }
 }
 
-/* Touch devices have no hover: always show the "Live" badge on project cards */
-@media (hover: none) {
-  #root .the-portfolio-container .the-projects .projects-container .project-box .box .face.front .project-preview a {
-    display: flex;
-    top: 0.75rem;
-    right: 0.75rem;
-    padding: 0.35rem 0.9rem;
-    font-size: 0.9rem;
-  }
-}
-
 /* Services: equal-height cards in an aligned grid (kept last to override the widths above) */
 #root .the-portfolio-container .the-services .services-container {
   display: grid;
@@ -1354,11 +1313,16 @@ h1 {
 
   .service-box {
     width: 100%;
+    height: 100%;
   }
 }
 
 @media(min-width: 1537px) {
-  #root .the-portfolio-container .the-services .services-container {
+
+  #root .the-portfolio-container .the-services .services-container,
+  #root .the-portfolio-container .skills-container,
+  #root .the-portfolio-container .project-filters,
+  #root .the-portfolio-container .projects-grid {
     max-width: 1800px;
   }
 }

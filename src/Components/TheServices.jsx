@@ -1,4 +1,6 @@
+import Reveal from "./Reveal";
 import servicesList from "../data/services";
+import staggerDelay from "../utils/staggerDelay";
 
 const TheServices = () => {
   return (
@@ -6,14 +8,14 @@ const TheServices = () => {
       className="the-services projects-services section-container"
       id="Services"
     >
-      <h2 className="section-heading">Services</h2>
+      <Reveal as="h2" className="section-heading">
+        Services
+      </Reveal>
       <div className="projects-services-container services-container">
-        {servicesList.map((service) => (
-          <ServiceBox
-            key={service.title}
-            title={service.title}
-            description={service.description}
-          />
+        {servicesList.map((service, index) => (
+          <Reveal key={service.title} delay={staggerDelay(index)}>
+            <ServiceBox title={service.title} description={service.description} />
+          </Reveal>
         ))}
       </div>
     </div>

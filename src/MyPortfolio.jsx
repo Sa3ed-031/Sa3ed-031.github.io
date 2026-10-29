@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { MotionConfig } from "motion/react";
 
 import TheHome from "./Components/TheHome";
+import TheSkills from "./Components/TheSkills";
 import TheHeader from "./Components/TheHeader";
 import TheFooter from "./Components/TheFooter";
 import TheContact from "./Components/TheContact";
@@ -11,6 +13,7 @@ import RecordResponse from "./Components/RecordResponse";
 
 const headerLinks = [
   "Home",
+  "Skills",
   "Services",
   "Projects",
   "Education",
@@ -29,26 +32,33 @@ export default function MyPortfolio() {
   // The previous problem solved, because i used the state global in the whole portfolio component, but its private for the contact component.
 
   return (
-    <div
-      className="the-portfolio-container flex flex-col"
-      onClick={() => {
-        showDropDownHeader ? setShowDropDownHeader(false) : null;
-        formModal.show ? setFormModal({ ...formModal, show: false }) : null;
-      }}
-    >
-      <TheHeader
-        headerLinks={headerLinks}
-        showDropDownHeader={showDropDownHeader}
-        setShowDropDownHeader={setShowDropDownHeader}
-      />
-      <TheHome />
-      <TheServices />
-      <TheProjects />
-      <TheEducation />
-      <TheContact setFormModal={setFormModal} />
-      <TheFooter headerLinks={headerLinks} />
+    // reducedMotion="user" turns off transform & layout animations for users who ask for less motion
+    <MotionConfig reducedMotion="user">
+      <div
+        className="the-portfolio-container flex flex-col"
+        onClick={() => {
+          showDropDownHeader ? setShowDropDownHeader(false) : null;
+          formModal.show ? setFormModal({ ...formModal, show: false }) : null;
+        }}
+      >
+        <TheHeader
+          headerLinks={headerLinks}
+          showDropDownHeader={showDropDownHeader}
+          setShowDropDownHeader={setShowDropDownHeader}
+        />
+        <TheHome />
+        <TheSkills />
+        <TheServices />
+        <TheProjects />
+        <TheEducation />
+        <TheContact setFormModal={setFormModal} />
+        <TheFooter headerLinks={headerLinks} />
 
-      <RecordResponse isVisible={formModal.show} message={formModal.message} />
-    </div>
+        <RecordResponse
+          isVisible={formModal.show}
+          message={formModal.message}
+        />
+      </div>
+    </MotionConfig>
   );
 }

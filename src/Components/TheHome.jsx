@@ -1,16 +1,10 @@
+import Reveal from "./Reveal";
 import SocialLinks from "./SocialLinks";
 import MyProfile from "../assets/images/profile.jpg";
 import myCV from "../assets/Sa3ed-CV.pdf";
 
-const techStack = [
-  "React",
-  "Tailwind",
-  "Firebase",
-  "axios",
-  "Redux",
-  "emailjs",
-  "MUI",
-];
+// Only the main tools; the full grouped list lives in the Skills section
+const techStack = ["React", "Tailwind", "Firebase", "Redux", "MUI"];
 
 const TheHome = () => {
   return (
@@ -18,7 +12,7 @@ const TheHome = () => {
       className="the-home overflow-hidden relative flex items-center justify-evenly gap-7 px-8 py-16 pt-22"
       id="Home"
     >
-      <div className="bio text-white gap-2 relative">
+      <Reveal direction="left" className="bio text-white gap-2 relative">
         <h1>
           Hi, I'm <span className="color-main">Saeed</span>
         </h1>
@@ -52,9 +46,9 @@ const TheHome = () => {
         <a href={myCV} className="overflow-hidden" download>
           <button className="btn">Download CV</button>
         </a>
-      </div>
+      </Reveal>
 
-      <div className="profile items-center relative">
+      <Reveal direction="right" className="profile items-center relative">
         <div className="relative">
           <div
             className="rectangle absolute left-1/2 top-[calc(50%+1rem)] w-[83%] aspect-square
@@ -63,7 +57,7 @@ const TheHome = () => {
           ></div>
           <img src={MyProfile} alt="Saeed Al-Haj Hussein" />
         </div>
-      </div>
+      </Reveal>
     </div>
   );
 };

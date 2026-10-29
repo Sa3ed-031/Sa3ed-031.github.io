@@ -6,60 +6,114 @@ import zmovie from "../assets/images/sa3ed-zmovie.png";
 
 const projectsList = [
   {
-    title: "Rennello Platform",
+    id: "rennello",
+    title: "Rennello",
+    subtitle: "Service Workshop Platform",
+    type: "team",
+    teamSize: 6,
     src: rennello,
-    url: "https://rennello.netlify.app",
-    tags: ["React", "Redux", "Tailwind", "MUI"],
-    description: `4th-year project (team of 6) 
-    - a platform connecting customers with local service workshops, with full RBAC for customers, workshop owners, and admins.
-    My contribution as Frontend Developer:
-    - Built the main homepage and the complete registration & login flow, including all related sub-pages,
-    - Developed the entire user (customer) route/flow across the platform,
-    - Built the request-details pages for both customers and workshop owners, covering status tracking (pending, approved, active, complete),
-    - Built the "My Workshop" management page for workshop owners.
-Tech stack: React.js, Redux, TailwindCSS, Material-UI, Framer Motion (frontend) - Laravel & MySQL (backend, by teammates).`,
+    live: "https://rennello.netlify.app",
+    code: null,
+    tech: [
+      "React",
+      "Redux",
+      "Context",
+      "React Router",
+      "Axios",
+      "API",
+      "Tailwind",
+      "MUI",
+      "Framer Motion",
+    ],
+    description:
+      "4th-year team project connecting customers with local service workshops, with role-based access for customers, owners and admins.",
+    highlights: [
+      "Built the homepage and the full registration & login flow",
+      "Built the customer-side flow and request-details pages with status tracking (pending, approved, active, complete)",
+      'Built the "My Workshop" page for owners, consuming the teammates\' Laravel REST API',
+    ],
+    featured: true,
   },
   {
-    title: "ZMovie Website",
+    id: "zmovie",
+    title: "ZMovie",
+    subtitle: "Movie & TV Discovery Platform",
+    type: "solo",
+    teamSize: null,
     src: zmovie,
-    url: "https://sa3ed-zmovie.netlify.app",
-    tags: ["React", "Tailwind", "Axios", "MUI"],
-    description: `A movie/TV discovery platform built with the TMDB API, featuring dynamic browsing, filtering, and a watchlist system
-- Built homepage, movies/TV-shows, search, trending, and watchlist pages with a structured React folder architecture,
-- Implemented multi-tab filtering (popular, top-rated, airing-today) and a dynamic "latest release" homepage banner,
-- Built a reusable Pagination component (using MUI) to handle large result sets, a custom useFetch hook to centralized API data-fetching,
-- Organized all API requests into a dedicated api layer for maintainability; watchlist currently persisted via Local Storage.
-Tech stack: React.js, TailwindCSS, Axios, Material-UI, Local Storage.`,
+    live: "https://sa3ed-zmovie.netlify.app",
+    code: "https://github.com/Sa3ed-031/zmovie",
+    tech: [
+      "React",
+      "React Router",
+      "Context",
+      "Axios",
+      "API",
+      "Tailwind",
+      "MUI",
+      "Styled Components",
+    ],
+    description:
+      "Movie and TV discovery platform powered by the TMDB API, with search, filters, trailers and a personal watchlist.",
+    highlights: [
+      "7 pages with search, genre/year/rating filters and pagination",
+      "Centralized API layer and a custom useFetch hook",
+      "Trailers, cast and similar titles",
+    ],
+    featured: true,
   },
   {
+    id: "archi-carpenter",
     title: "Archi Carpenter",
+    subtitle: "Business Website Concept",
+    type: "solo",
+    teamSize: null,
     src: carpentry,
-    url: "https://sa3ed-archi-carpenter.netlify.app",
-    tags: ["React", "React Router", "Leaflet", "GSAP"],
-    description: `A business website for a woodworking/carpentry company, showcasing services and past work with lead-generation forms
-- Used react-router to Build a homepage, services, projects, contact and about pages routes.
-- Used CSS & Media queries to style modern and responsive web pages.
-- Used Leaflet (an embedded location map) in the contact page.
-Tech stack: React.js, Material-UI, Leaflet (interactive map), GSAP (animations).`,
+    live: "https://sa3ed-archi-carpenter.netlify.app",
+    code: "https://github.com/Sa3ed-031/Archi-Carpenter",
+    tech: ["React", "React Router", "CSS", "MUI", "GSAP", "Context"],
+    description:
+      "Responsive multi-page website concept for a carpentry business.",
+    highlights: [
+      "5 routed pages plus a custom 404 page",
+      "GSAP animations, a Leaflet map and a contact form",
+      "SEO and Open Graph tags",
+    ],
+    featured: false,
   },
   {
+    id: "whatsapp-clone",
     title: "WhatsApp Clone",
+    subtitle: "Chat App UI Clone",
+    type: "solo",
+    teamSize: null,
     src: whatsapp,
-    url: "https://sa3ed-chatsapp.netlify.app",
-    tags: ["React", "MUI"],
-    description: `A UI and functional clone of WhatsApp's core chat experience
-- Designed and built the full UI flow across 8 pages (welcome, add-number, login/register, user page, chat & group info),
-- Implemented a data model with a global users array, unique per-user chat lists (by ID), and per-chat message threads,
-- Built group creation from existing chats, with broadcasting messages across group members.
-Tech stack: React.js, CSS, Material-UI, Local Storage.`,
+    live: "https://sa3ed-chatsapp.netlify.app",
+    code: "https://github.com/Sa3ed-031/whatsapp-clone",
+    tech: ["React", "CSS", "MUI", "Context", "Local Storage"],
+    description:
+      "WhatsApp-style chat app with private chats, groups and broadcast messaging, running fully in the browser.",
+    highlights: [
+      "10+ screens on a client-side data model",
+      "Group creation with broadcasting",
+      "SHA-256 password hashing",
+    ],
+    featured: false,
   },
   {
-    title: "Articles Blog",
+    id: "articles-blog",
+    title: "Tech Insight",
+    subtitle: "Tech Articles Blog",
+    type: "solo",
+    teamSize: null,
     src: articles,
-    url: "https://sa3ed-articles-blog-project.netlify.app",
-    tags: ["React", "Styled Components"],
-    description: `A responsive blog website built with React.js and styled-components.
-       It features a clean interface, dynamic content, and a seamless user experience.`,
+    live: "https://sa3ed-articles-blog-project.netlify.app",
+    code: null,
+    tech: ["React", "Context", "CSS", "Styled Components"],
+    description:
+      "Responsive tech articles blog with search, filters and light/dark mode.",
+    highlights: ["List and grid views", "Light and dark mode"],
+    featured: false,
   },
 ];
 

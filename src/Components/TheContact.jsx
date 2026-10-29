@@ -1,6 +1,7 @@
 // Must Reduce Inputs Fields Code
 import { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
+import Reveal from "./Reveal";
 
 const TheContact = ({ setFormModal }) => {
   const form = useRef();
@@ -116,9 +117,9 @@ const TheContact = ({ setFormModal }) => {
   return (
     <div className="the-contact section-container pb-12" id="Contact">
       <div className="flex flex-col gap-2">
-        <h2 className="section-heading">
+        <Reveal as="h2" className="section-heading">
           Contact <span className="color-main">Me</span>
-        </h2>
+        </Reveal>
 
         <p className="contact-email almost-white text-center text-lg">
           Email me directly at{" "}
