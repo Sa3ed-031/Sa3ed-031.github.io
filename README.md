@@ -2,7 +2,7 @@
 
 My personal portfolio: a fast, responsive React site that presents my services and projects, with a working contact form.
 
-[![Live Demo](https://img.shields.io/badge/Live_Demo-sa3ed--031.github.io-4f39f6?style=for-the-badge&logo=netlify&logoColor=white)](https://sa3ed-031.github.io)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-sa3ed--031.github.io-4f39f6?style=for-the-badge&logo=github&logoColor=white)](https://sa3ed-031.github.io)
 
 <img src="./public/preview.png" width="800" alt="Portfolio preview" />
 
@@ -25,7 +25,7 @@ My personal portfolio: a fast, responsive React site that presents my services a
 | Routing       | React Router 7                              |
 | Contact form  | EmailJS (`@emailjs/browser`)                |
 | Linting       | ESLint 9                                    |
-| Hosting       | GitHub Pages (GitHub Actions)                                     |
+| Hosting       | GitHub Pages (GitHub Actions)               |
 
 ## Getting Started
 
@@ -46,7 +46,7 @@ VITE_EMAILJS_TEMPLATE_ID=
 VITE_EMAILJS_PUBLIC_KEY=
 ```
 
-`.env` is ignored by Git. When deploying (e.g. on Netlify), add the same variables in the site's environment settings.
+`.env` is ignored by Git. For deployment, add the same variables as repository secrets in GitHub (Settings → Secrets and variables → Actions).
 
 ### Scripts
 
