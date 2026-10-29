@@ -1,15 +1,129 @@
-:root {
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
+@import "tailwindcss";
+/* Old stylesheet, emptied one component at a time while moving to Tailwind classes */
+@import "./App.css";
 
-  font-family: "Poppins", sans-serif;
-  /* For Font Type Looks Nice */
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@theme {
+  --font-sans: "Poppins", sans-serif;
+  --font-poppins: "Poppins", sans-serif;
+
+  --color-navy: #101828;
+  --color-surface: #1a223c;
+  --color-indigo-brand: #4f39f6;
+  --color-lavender: #a59bff;
+  --color-cloud: #edf0f8;
+  --color-signal: #4ade80;
+  /* Two more colors the current design already uses */
+  --color-indigo-deep: #3931d4; /* borders, glows and filled cards */
+  --color-ink: #08060d; /* outline button background */
+
+  --animate-words: words 12s infinite;
+  --animate-typing: cursor 0.6s infinite, typing 20s steps(14) infinite;
+}
+
+/* The site's original breakpoints, kept exact so nothing shifts.
+   upto-N matches max-width: Npx (Tailwind's own max-* variants exclude N itself).
+   Widest first, so narrower screens override wider ones. */
+@custom-variant from-1537 (@media (min-width: 1537px));
+@custom-variant from-2000 (@media (min-width: 2000px));
+@custom-variant from-2600 (@media (min-width: 2600px));
+@custom-variant upto-932 (@media (max-width: 932px));
+@custom-variant upto-768 (@media (max-width: 768px));
+@custom-variant upto-680 (@media (max-width: 680px));
+@custom-variant upto-655 (@media (max-width: 655px));
+@custom-variant upto-616 (@media (max-width: 616px));
+@custom-variant upto-492 (@media (max-width: 492px));
+@custom-variant upto-434 (@media (max-width: 434px));
+@custom-variant upto-380 (@media (max-width: 380px));
+@custom-variant upto-322 (@media (max-width: 322px));
+
+@layer base {
+  :root {
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Every color/size change on the site eases over 0.6s; utilities can still override it */
+  * {
+    transition: 0.6s;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  #root {
+    min-height: 100vh;
+    background-color: var(--color-navy);
+  }
+}
+
+::-webkit-scrollbar {
+  width: 0.8rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-indigo-deep);
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--color-navy);
+}
+
+@media (max-width: 616px) {
+  ::-webkit-scrollbar {
+    width: 0.6rem;
+  }
+}
+
+/* Hero typing effect: cycles the role text, a navy block wipes it like a cursor */
+@keyframes cursor {
+  to {
+    border-left: 2px solid var(--color-indigo-deep);
+  }
+}
+
+@keyframes words {
+  0%,
+  33% {
+    content: "Front-End Developer";
+  }
+
+  34%,
+  67% {
+    content: "React Developer";
+  }
+
+  68%,
+  100% {
+    content: "Web Designer";
+  }
+}
+
+@keyframes typing {
+  10%,
+  15%,
+  30%,
+  35%,
+  50%,
+  55%,
+  70%,
+  75%,
+  90%,
+  95% {
+    width: 0;
+  }
+
+  5%,
+  20%,
+  25%,
+  40%,
+  45%,
+  60%,
+  65%,
+  80%,
+  85% {
+    width: calc(100% + 8px);
+  }
 }

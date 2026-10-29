@@ -1,43 +1,17 @@
-@import "tailwindcss";
-
-@theme {
-  --font-sans: "Poppins", sans-serif;
-}
-
 :root {
-  /* --main-color: rgb(15, 94, 250); */
-  /* --main-color: #583fc7; */
-  /* --main-color: #372aac; */
   --main-color: #3931d4;
   /* Lighter accent for text on dark backgrounds (WCAG AA contrast) */
   --main-color-light: #a59bff;
   --main-border-radius: 0.4rem;
-  --text: #6b6375;
   --text-h: #08060d;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --color-gray-900: oklch(21% 0.034 264.665);
   --main-duration: 0.6s;
   --almost-white: rgba(255, 255, 255, 0.9);
-}
-
-* {
-  transition: var(--main-duration);
 }
 
 /* Motion drives these elements itself, a CSS transition would make it lag */
 .reveal,
 .motion-card {
   transition: none;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: "Poppins", sans-serif;
 }
 
 h1 {
@@ -59,11 +33,6 @@ h1 {
 }
 
 #root {
-  max-width: 100%;
-  min-height: 100vh;
-  background-color: var(--color-gray-900);
-  box-sizing: border-box;
-
   .the-portfolio-container {
     transition: all var(--main-duration) ease-in-out;
     /* Keeps the reveal offsets from causing horizontal scrolling */
@@ -558,72 +527,6 @@ h1 {
   }
 }
 
-::-webkit-scrollbar {
-  width: 0.8rem;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: var(--main-color);
-}
-
-::-webkit-scrollbar-track {
-  background-color: var(--color-gray-900);
-}
-
-/* Animations */
-@keyframes cursor {
-  to {
-    border-left: 2px solid var(--main-color);
-  }
-}
-
-@keyframes words {
-
-  0%,
-  33% {
-    content: "Front-End Developer";
-  }
-
-  34%,
-  67% {
-    content: "React Developer";
-  }
-
-  68%,
-  100% {
-    content: "Web Designer";
-  }
-}
-
-@keyframes typing {
-
-  10%,
-  15%,
-  30%,
-  35%,
-  50%,
-  55%,
-  70%,
-  75%,
-  90%,
-  95% {
-    width: 0;
-  }
-
-  5%,
-  20%,
-  25%,
-  40%,
-  45%,
-  60%,
-  65%,
-  80%,
-  85% {
-    width: calc(100% + 8px);
-  }
-}
-
-/* Every thing before is Unmakinglessable */
 /* Media Queries */
 @media(min-width: 1537px) {
   #root .the-portfolio-container {
@@ -1033,11 +936,6 @@ h1 {
 }
 
 @media(max-width:616px) {
-
-  ::-webkit-scrollbar {
-    width: 0.6rem;
-  }
-
   #root .the-portfolio-container {
 
     .section-container .section-heading {
