@@ -9,10 +9,13 @@ My personal portfolio: a fast, responsive React site that presents my services a
 ## Features
 
 - **Responsive design** that works from small phones to large desktop screens
-- **Projects showcase** with tech-stack tags, 3D flip cards for details, and links to each live site
+- **Categorized skills section** grouping my tech stack (languages, frontend, styling, backend, tools) with logo icons
+- **Projects showcase** with team/solo badges, tech tags, expandable highlights, and links to each live demo and source code
+- **Project filtering** by type (team / solo) and by technology, with animated reflow when filters change
 - **Services section** describing what I offer to clients
 - **Contact form** that sends messages straight to my inbox with [EmailJS](https://www.emailjs.com/)
-- **Animations:** typing effect in the hero, card flip and hover transitions
+- **Scroll animations:** sections and cards fade in as they scroll into view (via [Motion](https://motion.dev/)), and respect the reduced-motion setting
+- **Other animations:** typing effect in the hero and hover transitions
 
 ## Tech Stack
 
@@ -22,6 +25,8 @@ My personal portfolio: a fast, responsive React site that presents my services a
 | Build tool    | Vite 8                                      |
 | Styling       | Tailwind CSS 4, custom CSS                  |
 | UI components | Material UI 7 (icons, buttons) with Emotion |
+| Animations    | Motion (formerly Framer Motion)             |
+| Icons         | React Icons (Simple Icons set)              |
 | Routing       | React Router 7                              |
 | Contact form  | EmailJS (`@emailjs/browser`)                |
 | Linting       | ESLint 9                                    |
