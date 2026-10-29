@@ -12,19 +12,6 @@ const techStack = [
   "MUI",
 ];
 
-// const techStack2 = [
-//   {},
-//   {},
-//   {},
-//   "React",
-//   "Tailwind",
-//   "Firebase",
-//   "axios",
-//   "Redux",
-//   "emailjs",
-//   "MUI",
-// ];
-
 const TheHome = () => {
   return (
     <div
