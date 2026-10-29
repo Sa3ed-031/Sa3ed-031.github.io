@@ -87,25 +87,6 @@ h1 {
       }
     }
 
-    .the-header {
-      backdrop-filter: blur(30px);
-
-      .my-name:hover {
-        transform: scale(1.08);
-      }
-
-      .links-toggle {
-        display: none;
-        color: var(--main-color);
-        transition: all var(--main-duration) ease-in-out;
-      }
-
-      .links a:hover {
-        color: var(--main-color-light);
-        border-bottom-color: var(--main-color-light);
-      }
-    }
-
     .the-home {
 
       .bio,
@@ -531,11 +512,6 @@ h1 {
 @media(min-width: 1537px) {
   #root .the-portfolio-container {
 
-    .the-header .my-name {
-      font-size: 2rem;
-    }
-
-    .the-header .links a,
     .the-footer .links a {
       font-size: 2rem;
     }
@@ -745,18 +721,6 @@ h1 {
 
 @media(max-width:768px) {
   #root .the-portfolio-container {
-    .the-header {
-      justify-content: space-between;
-
-      .my-name {
-        padding-right: 0;
-      }
-
-      .links {
-        gap: 0;
-      }
-    }
-
     .the-home {
       flex-direction: column-reverse;
       gap: 2rem;
@@ -890,47 +854,6 @@ h1 {
         }
 
       }
-    }
-  }
-}
-
-/* Header Links Toggle */
-@media(max-width:655px) {
-  #root .the-portfolio-container {
-    .the-header {
-      padding: 0 1rem;
-      justify-content: space-between;
-
-      .links-toggle {
-        display: block;
-      }
-
-      .links {
-        display: none;
-        position: absolute;
-        top: 100%;
-        right: 0;
-        width: 100%;
-        flex-direction: column;
-        border: 3px solid rgba(15, 93, 250, 0.5);
-        overflow: hidden;
-        gap: 0.5rem;
-        background-color: oklch(27.837% 0.03355 257.693 / 0.92);
-
-        a {
-          transition: all 0.4s ease-in-out;
-        }
-
-
-        a:last-child:hover {
-          border-color: transparent;
-        }
-      }
-
-      .links.links-open {
-        display: flex;
-      }
-
     }
   }
 }
