@@ -28,7 +28,7 @@ const techStack = [
 const TheHome = () => {
   return (
     <div
-      className="the-home max-md:pt-22 overflow-hidden relative flex items-center justify-evenly gap-7 px-8 py-16"
+      className="the-home overflow-hidden relative flex items-center justify-evenly gap-7 px-8 py-16 pt-22"
       id="Home"
     >
       <div className="bio text-white gap-2 relative">

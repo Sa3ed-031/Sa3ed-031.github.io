@@ -45,7 +45,7 @@ Tech stack: React.js, Material-UI, Leaflet (interactive map), GSAP (animations).
   {
     title: "WhatsApp Clone",
     src: whatsapp,
-    url: "https://sa3ed-chatsapp-clone-project.netlify.app",
+    url: "https://sa3ed-chatsapp.netlify.app",
     tags: ["React", "MUI"],
     description: `A UI and functional clone of WhatsApp's core chat experience
 - Designed and built the full UI flow across 8 pages (welcome, add-number, login/register, user page, chat & group info),
