@@ -451,12 +451,18 @@ h1 {
           border-radius: 999px;
         }
 
-        .details-toggle {
+        .flip-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.3rem;
+          font-weight: 700;
           cursor: pointer;
+          color: var(--main-color-light);
         }
 
-        .highlights:not([hidden]) {
-          display: flex;
+        .flip-btn:hover,
+        .flip-btn:focus-visible {
+          color: var(--almost-white);
         }
 
         .card-btn {

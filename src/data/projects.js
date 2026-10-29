@@ -1,8 +1,9 @@
-import articles from "../assets/images/articles-blog.png";
-import whatsapp from "../assets/images/whatsapp-clone.png";
-import carpentry from "../assets/images/carpentry-agency.png";
-import rennello from "../assets/images/rennello.png";
-import zmovie from "../assets/images/sa3ed-zmovie.png";
+// Plain screenshots of each live site (the *.png social images already contain the title)
+import articles from "../assets/images/screenshots/articles-blog-screenshot.jpg";
+import whatsapp from "../assets/images/screenshots/whatsapp-clone-screenshot.jpg";
+import carpentry from "../assets/images/screenshots/archi-carpenter-screenshot.jpg";
+import rennello from "../assets/images/screenshots/rennello-screenshot.jpg";
+import zmovie from "../assets/images/screenshots/zmovie-screenshot.jpg";
 
 const projectsList = [
   {
@@ -17,7 +18,7 @@ const projectsList = [
     tech: [
       "React",
       "Redux",
-      "Context",
+      "Context API",
       "React Router",
       "Axios",
       "API",
@@ -46,7 +47,7 @@ const projectsList = [
     tech: [
       "React",
       "React Router",
-      "Context",
+      "Context API",
       "Axios",
       "API",
       "Tailwind",
@@ -71,7 +72,7 @@ const projectsList = [
     src: carpentry,
     live: "https://sa3ed-archi-carpenter.netlify.app",
     code: "https://github.com/Sa3ed-031/Archi-Carpenter",
-    tech: ["React", "React Router", "CSS", "MUI", "GSAP", "Context"],
+    tech: ["React", "React Router", "CSS", "MUI", "GSAP", "Context API"],
     description:
       "Responsive multi-page website concept for a carpentry business.",
     highlights: [
@@ -90,7 +91,7 @@ const projectsList = [
     src: whatsapp,
     live: "https://sa3ed-chatsapp.netlify.app",
     code: "https://github.com/Sa3ed-031/whatsapp-clone",
-    tech: ["React", "CSS", "MUI", "Context", "Local Storage"],
+    tech: ["React", "CSS", "MUI", "Context API", "Local Storage"],
     description:
       "WhatsApp-style chat app with private chats, groups and broadcast messaging, running fully in the browser.",
     highlights: [
@@ -109,7 +110,7 @@ const projectsList = [
     src: articles,
     live: "https://sa3ed-articles-blog-project.netlify.app",
     code: null,
-    tech: ["React", "Context", "CSS", "Styled Components"],
+    tech: ["React", "Context API", "CSS", "Styled Components"],
     description:
       "Responsive tech articles blog with search, filters and light/dark mode.",
     highlights: ["List and grid views", "Light and dark mode"],

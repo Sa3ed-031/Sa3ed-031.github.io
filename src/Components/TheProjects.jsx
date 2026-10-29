@@ -1,5 +1,7 @@
-import { useMemo, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import AutorenewIcon from "@mui/icons-material/Autorenew";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Reveal from "./Reveal";
 import projectsList from "../data/projects";
 import staggerDelay from "../utils/staggerDelay";
@@ -39,6 +41,8 @@ const techOptions = Object.keys(techCounts).sort(
 const TheProjects = () => {
   const [type, setType] = useState("all");
   const [selectedTech, setSelectedTech] = useState([]);
+  // Ids of the cards showing their back face; cleared whenever the filters change
+  const [flippedIds, setFlippedIds] = useState([]);
 
   const filteredProjects = useMemo(
     () =>
@@ -52,15 +56,28 @@ const TheProjects = () => {
 
   const isFiltered = type !== "all" || selectedTech.length > 0;
 
+  const changeType = (value) => {
+    setType(value);
+    setFlippedIds([]);
+  };
+
   const toggleTech = (tech) => {
     setSelectedTech((prev) =>
       prev.includes(tech) ? prev.filter((t) => t !== tech) : [...prev, tech],
     );
+    setFlippedIds([]);
   };
 
   const clearFilters = () => {
     setType("all");
     setSelectedTech([]);
+    setFlippedIds([]);
+  };
+
+  const setFlipped = (id, flipped) => {
+    setFlippedIds((prev) =>
+      flipped ? [...prev, id] : prev.filter((flippedId) => flippedId !== id),
+    );
   };
 
   return (
@@ -81,7 +98,7 @@ const TheProjects = () => {
               type="button"
               aria-pressed={type === filter.value}
               className={`filter-btn ${type === filter.value ? "active" : ""}`}
-              onClick={() => setType(filter.value)}
+              onClick={() => changeType(filter.value)}
             >
               {filter.label} ({filter.count})
             </button>
@@ -125,7 +142,11 @@ const TheProjects = () => {
               transition={{ duration: 0.3, ease: "easeOut" }}
             >
               <Reveal delay={staggerDelay(index)} className="h-full">
-                <ProjectCard project={project} />
+                <ProjectCard
+                  project={project}
+                  flipped={flippedIds.includes(project.id)}
+                  onFlip={(flipped) => setFlipped(project.id, flipped)}
+                />
               </Reveal>
             </MotionDiv>
           ))}
@@ -146,8 +167,14 @@ const TheProjects = () => {
   );
 };
 
-const ProjectCard = ({ project }) => {
-  const [showDetails, setShowDetails] = useState(false);
+// Both faces sit in the same grid cell, so the card is as tall as its taller face
+const ProjectCard = ({ project, flipped, onFlip }) => {
+  const shouldReduceMotion = useReducedMotion();
+  const detailsButton = useRef(null);
+  const backButton = useRef(null);
+  // Only move focus after a click, not when the filters reset the card
+  const focusAfterFlip = useRef(false);
+
   const {
     id,
     title,
@@ -155,86 +182,157 @@ const ProjectCard = ({ project }) => {
     type,
     teamSize,
     src,
-    live,
-    code,
-    tech,
-    description,
     highlights,
+    description,
   } = project;
 
+  useEffect(() => {
+    if (!focusAfterFlip.current) return;
+    focusAfterFlip.current = false;
+    (flipped ? backButton : detailsButton).current?.focus();
+  }, [flipped]);
+
+  const flip = (toBack) => {
+    focusAfterFlip.current = true;
+    onFlip(toBack);
+  };
+
+  // With reduced motion the faces cross-fade instead of rotating
+  const faceClass = shouldReduceMotion
+    ? "transition-opacity duration-300"
+    : "backface-hidden";
+
   return (
-    <article className="project-card h-full flex flex-col overflow-hidden rounded-3xl">
-      <div className="project-preview aspect-video overflow-hidden">
-        <img
-          src={src}
-          alt={`${title} – ${subtitle} homepage screenshot`}
-          loading="lazy"
-          className="w-full h-full object-cover object-top"
-        />
-      </div>
-
-      <div className="project-info flex flex-col flex-1 gap-3 p-5">
-        <div className="flex items-start justify-between gap-3">
-          <div>
-            <h3 className="almost-white text-2xl font-extrabold">{title}</h3>
-            <p className="color-main text-sm font-semibold">{subtitle}</p>
+    <div className="h-full perspective-[1200px]">
+      <div
+        className={`relative grid h-full transform-3d transition-transform duration-600 ease-in-out ${
+          flipped && !shouldReduceMotion ? "rotate-y-180" : ""
+        }`}
+      >
+        <article
+          inert={flipped}
+          aria-hidden={flipped}
+          className={`project-card flex flex-col overflow-hidden rounded-3xl [grid-area:1/1] ${faceClass} ${
+            shouldReduceMotion && flipped ? "opacity-0" : ""
+          }`}
+        >
+          <div className="project-preview aspect-video overflow-hidden">
+            <img
+              src={src}
+              alt={`${title} – ${subtitle} homepage screenshot`}
+              loading="lazy"
+              className="w-full h-full object-cover object-top"
+            />
           </div>
-          <span className="type-badge shrink-0">
-            {type === "team" ? `Team of ${teamSize}` : "Solo"}
-          </span>
-        </div>
 
-        <p className="almost-white">{description}</p>
+          <div className="flex flex-col flex-1 gap-3 p-5">
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <h3 className="almost-white text-2xl font-extrabold">
+                  {title}
+                </h3>
+                <p className="color-main text-sm font-semibold">{subtitle}</p>
+              </div>
+              <span className="type-badge shrink-0">
+                {type === "team" ? `Team of ${teamSize}` : "Solo"}
+              </span>
+            </div>
 
-        <ul className="project-tags flex flex-wrap gap-1.5">
-          {tech.map((t) => (
-            <li key={t}>{t}</li>
-          ))}
-        </ul>
+            <p className="almost-white">{description}</p>
 
-        <button
-          type="button"
-          className="details-toggle color-main font-bold w-fit"
-          aria-expanded={showDetails}
-          aria-controls={`${id}-highlights`}
-          onClick={() => setShowDetails((prev) => !prev)}
+            <TechTags tech={project.tech} />
+
+            <div className="mt-auto flex flex-wrap items-center gap-3 pt-2">
+              <ProjectLinks project={project} />
+              <button
+                ref={detailsButton}
+                type="button"
+                className="flip-btn ml-auto"
+                aria-expanded={flipped}
+                aria-controls={`${id}-details`}
+                aria-label={`Show details for ${title}`}
+                onClick={() => flip(true)}
+              >
+                Details <AutorenewIcon fontSize="small" aria-hidden="true" />
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article
+          id={`${id}-details`}
+          inert={!flipped}
+          aria-hidden={!flipped}
+          className={`project-card flex flex-col gap-4 overflow-hidden rounded-3xl p-5 [grid-area:1/1] ${faceClass} ${
+            shouldReduceMotion ? (flipped ? "" : "opacity-0") : "rotate-y-180"
+          }`}
         >
-          {showDetails ? "Hide details ↑" : "Read more →"}
-        </button>
-        <ul
-          id={`${id}-highlights`}
-          hidden={!showDetails}
-          className="highlights almost-white list-disc pl-5 flex-col gap-1"
-        >
-          {highlights.map((highlight) => (
-            <li key={highlight}>{highlight}</li>
-          ))}
-        </ul>
+          <h3 className="almost-white text-2xl font-extrabold">{title}</h3>
+          <h4 className="color-main font-bold uppercase tracking-wider text-sm">
+            {type === "team" ? "My role" : "Highlights"}
+          </h4>
+          <ul className="almost-white flex list-disc flex-col gap-2 pl-5">
+            {highlights.map((highlight) => (
+              <li key={highlight}>{highlight}</li>
+            ))}
+          </ul>
 
-        <div className="mt-auto flex flex-wrap gap-3 pt-2">
-          <a
-            href={live}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Open ${title} live demo`}
-            className="card-btn primary"
-          >
-            Live Demo
-          </a>
-          {code && (
-            <a
-              href={code}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`View ${title} source code on GitHub`}
-              className="card-btn"
+          <TechTags tech={project.tech} />
+
+          <div className="mt-auto flex flex-wrap items-center gap-3 pt-2">
+            <ProjectLinks project={project} />
+            <button
+              ref={backButton}
+              type="button"
+              className="flip-btn ml-auto"
+              aria-expanded={flipped}
+              aria-controls={`${id}-details`}
+              aria-label={`Back to ${title} overview`}
+              onClick={() => flip(false)}
             >
-              Code
-            </a>
-          )}
-        </div>
+              <ArrowBackIcon fontSize="small" aria-hidden="true" /> Back
+            </button>
+          </div>
+        </article>
       </div>
-    </article>
+    </div>
+  );
+};
+
+const TechTags = ({ tech }) => {
+  return (
+    <ul className="project-tags flex flex-wrap gap-1.5">
+      {tech.map((t) => (
+        <li key={t}>{t}</li>
+      ))}
+    </ul>
+  );
+};
+
+const ProjectLinks = ({ project: { title, live, code } }) => {
+  return (
+    <>
+      <a
+        href={live}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`Open ${title} live demo`}
+        className="card-btn primary"
+      >
+        Live Demo
+      </a>
+      {code && (
+        <a
+          href={code}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`View ${title} source code on GitHub`}
+          className="card-btn"
+        >
+          Code
+        </a>
+      )}
+    </>
   );
 };
 
