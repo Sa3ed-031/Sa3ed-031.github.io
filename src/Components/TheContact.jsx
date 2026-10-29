@@ -115,19 +115,21 @@ const TheContact = ({ setFormModal }) => {
 
   return (
     <div className="the-contact section-container pb-12" id="Contact">
-      <h2 className="section-heading">
-        Contact <span className="color-main">Me</span>
-      </h2>
+      <div className="flex flex-col gap-2">
+        <h2 className="section-heading">
+          Contact <span className="color-main">Me</span>
+        </h2>
 
-      <p className="contact-email almost-white text-center text-lg">
-        Email me directly at{" "}
-        <a
-          href="mailto:saeedalhajwork@gmail.com"
-          className="color-main font-bold underline underline-offset-4 break-all"
-        >
-          saeedalhajwork@gmail.com
-        </a>
-      </p>
+        <p className="contact-email almost-white text-center text-lg">
+          Email me directly at{" "}
+          <a
+            href="mailto:saeedalhajwork@gmail.com"
+            className="color-main font-bold underline underline-offset-4 break-all"
+          >
+            saeedalhajwork@gmail.com
+          </a>
+        </p>
+      </div>
 
       <form
         ref={form}
