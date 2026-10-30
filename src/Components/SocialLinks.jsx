@@ -21,7 +21,7 @@ const homeLinks = [
 const variants = {
   hero: "hover:scale-103 hover:bg-indigo-brand upto-434:size-[2.1rem] upto-434:text-[2.4rem]",
   footer:
-    "hover:transform-[scale(1.02)_translateY(-0.5rem)] hover:bg-indigo-deep",
+    "hover:transform-[scale(1.02)_translateY(-0.5rem)] hover:bg-indigo-brand",
 };
 
 const SocialLinks = ({ variant }) => {
@@ -37,13 +37,13 @@ const SocialLinks = ({ variant }) => {
           title={link.name}
           // The icon takes its size from this link's font size
           className={clsx(
-            "group flex size-10 items-center justify-center rounded-full border-3 border-indigo-deep text-[1.5rem] transition-all duration-400 ease-in-out hover:shadow-[0_0_20px_var(--color-indigo-deep)] from-1537:size-16 from-1537:overflow-hidden from-1537:border-none from-1537:text-[5.1rem] from-2000:size-20 upto-492:size-[2.2rem] upto-492:overflow-hidden upto-492:text-[2.6rem]",
+            "group flex size-10 items-center justify-center rounded-full border-3 border-indigo-brand text-[1.5rem] transition-all duration-400 ease-in-out hover:shadow-[0_0_20px_var(--color-indigo-brand)] from-1537:size-16 from-1537:overflow-hidden from-1537:border-none from-1537:text-[5.1rem] from-2000:size-20 upto-492:size-[2.2rem] upto-492:overflow-hidden upto-492:text-[2.6rem]",
             variants[variant],
           )}
         >
           <link.Icon
             fontSize="inherit"
-            className="text-indigo-deep group-hover:text-navy"
+            className="text-indigo-brand group-hover:text-navy"
           />
         </a>
       ))}

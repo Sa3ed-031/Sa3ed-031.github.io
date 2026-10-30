@@ -13,7 +13,7 @@ import staggerDelay from "../utils/staggerDelay";
 
 const MotionDiv = motion.div;
 
-const activeFilter = "border-indigo-brand bg-indigo-brand text-white";
+const activeFilter = "border-indigo-brand bg-indigo-brand text-cloud";
 const filterText = "cursor-pointer font-semibold text-lavender";
 
 // Featured projects first, otherwise keep the data order
@@ -89,14 +89,14 @@ const TheProjects = () => {
   };
 
   return (
-    <Section id="Projects" className="bg-gray-800">
+    <Section id="Projects" className="bg-surface">
       <SectionTitle>Projects</SectionTitle>
 
       <Reveal className="mx-auto flex w-full max-w-7xl flex-col items-center gap-4 from-1537:max-w-[1800px]">
         <div
           role="group"
           aria-label="Filter projects by type"
-          className="flex overflow-hidden rounded-full border-2 border-indigo-deep"
+          className="flex overflow-hidden rounded-full border-2 border-indigo-brand"
         >
           {typeFilters.map((filter) => (
             <button
@@ -108,7 +108,7 @@ const TheProjects = () => {
                 "px-[1.2rem] py-2 not-first:border-l-2",
                 type === filter.value
                   ? activeFilter
-                  : "border-indigo-deep hover:bg-indigo-brand/25",
+                  : "border-indigo-brand hover:bg-indigo-brand/25",
               )}
               onClick={() => changeType(filter.value)}
             >
@@ -172,9 +172,7 @@ const TheProjects = () => {
 
       {filteredProjects.length === 0 && (
         <div className="flex flex-col items-center gap-4 text-center">
-          <p className="text-lg text-white/90">
-            No projects match these filters.
-          </p>
+          <p className="text-lg text-cloud">No projects match these filters.</p>
           <ClearButton onClick={clearFilters}>Clear filters</ClearButton>
         </div>
       )}
@@ -188,7 +186,7 @@ const ClearButton = (props) => {
       type="button"
       className={clsx(
         filterText,
-        "px-[0.9rem] py-1 text-[0.9rem] underline underline-offset-4 hover:text-white/90",
+        "px-[0.9rem] py-1 text-[0.9rem] underline underline-offset-4 hover:text-cloud",
       )}
       {...props}
     />
@@ -253,19 +251,17 @@ const ProjectCard = ({ project, flipped, onFlip }) => {
           <div className="flex flex-1 flex-col gap-3 p-5">
             <div className="flex items-start justify-between gap-3">
               <div>
-                <h3 className="text-2xl font-extrabold text-white/90">
-                  {title}
-                </h3>
+                <h3 className="text-2xl font-extrabold text-cloud">{title}</h3>
                 <p className="text-sm font-semibold text-lavender">
                   {subtitle}
                 </p>
               </div>
-              <span className="shrink-0 rounded-full bg-indigo-deep px-[0.7rem] py-[0.15rem] text-[0.8rem] font-bold text-white/90">
+              <span className="shrink-0 rounded-full bg-indigo-brand px-[0.7rem] py-[0.15rem] text-[0.8rem] font-bold text-cloud">
                 {type === "team" ? `Team of ${teamSize}` : "Solo"}
               </span>
             </div>
 
-            <p className="text-white/90">{description}</p>
+            <p className="text-cloud">{description}</p>
 
             <TechTags tech={project.tech} />
 
@@ -295,11 +291,11 @@ const ProjectCard = ({ project, flipped, onFlip }) => {
             shouldReduceMotion ? !flipped && "opacity-0" : "rotate-y-180",
           )}
         >
-          <h3 className="text-2xl font-extrabold text-white/90">{title}</h3>
+          <h3 className="text-2xl font-extrabold text-cloud">{title}</h3>
           <h4 className="text-sm font-bold tracking-wider text-lavender uppercase">
             {type === "team" ? "My role" : "Highlights"}
           </h4>
-          <ul className="flex list-disc flex-col gap-2 pl-5 text-white/90">
+          <ul className="flex list-disc flex-col gap-2 pl-5 text-cloud">
             {highlights.map((highlight) => (
               <li key={highlight}>{highlight}</li>
             ))}
@@ -329,7 +325,7 @@ const FlipButton = (props) => {
   return (
     <button
       type="button"
-      className="ml-auto inline-flex cursor-pointer items-center gap-[0.3rem] font-bold text-lavender hover:text-white/90 focus-visible:text-white/90"
+      className="ml-auto inline-flex cursor-pointer items-center gap-[0.3rem] font-bold text-lavender hover:text-cloud focus-visible:text-cloud"
       {...props}
     />
   );
@@ -352,7 +348,7 @@ const TechTags = ({ tech }) => {
 };
 
 const cardButton =
-  "rounded-full border-2 px-[1.1rem] py-[0.45rem] font-bold hover:border-indigo-brand hover:bg-indigo-brand hover:text-white";
+  "rounded-full border-2 px-[1.1rem] py-[0.45rem] font-bold hover:border-indigo-brand hover:bg-indigo-brand hover:text-cloud";
 
 const ProjectLinks = ({ project: { title, live, code } }) => {
   return (
@@ -364,7 +360,7 @@ const ProjectLinks = ({ project: { title, live, code } }) => {
         aria-label={`Open ${title} live demo`}
         className={clsx(
           cardButton,
-          "border-indigo-brand bg-indigo-brand text-white",
+          "border-indigo-brand bg-indigo-brand text-cloud hover:brightness-115",
         )}
       >
         Live Demo
@@ -375,7 +371,7 @@ const ProjectLinks = ({ project: { title, live, code } }) => {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`View ${title} source code on GitHub`}
-          className={clsx(cardButton, "border-indigo-deep text-lavender")}
+          className={clsx(cardButton, "border-indigo-brand text-lavender")}
         >
           Code
         </a>

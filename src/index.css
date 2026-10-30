@@ -4,17 +4,17 @@
   --font-sans: "Poppins", sans-serif;
   --font-poppins: "Poppins", sans-serif;
 
+  /* Brand identity:
+     navy = main background, surface = cards & panels,
+     indigo-brand = primary accent, borders and glows,
+     lavender = secondary text & links, cloud = headings & body,
+     signal = status / "available" */
   --color-navy: #101828;
   --color-surface: #1a223c;
   --color-indigo-brand: #4f39f6;
   --color-lavender: #a59bff;
   --color-cloud: #edf0f8;
   --color-signal: #4ade80;
-  /* Two more colors the current design already uses */
-  --color-indigo-deep: #3931d4;
-  /* borders, glows and filled cards */
-  --color-ink: #08060d;
-  /* outline button background */
 
   --animate-words: words 12s infinite;
   --animate-typing: cursor 0.6s infinite, typing 20s steps(14) infinite;
@@ -64,7 +64,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(--color-indigo-deep);
+  background-color: var(--color-indigo-brand);
 }
 
 ::-webkit-scrollbar-track {
@@ -80,7 +80,7 @@
 /* Hero typing effect: cycles the role text, a navy block wipes it like a cursor */
 @keyframes cursor {
   to {
-    border-left: 2px solid var(--color-indigo-deep);
+    border-left: 2px solid var(--color-indigo-brand);
   }
 }
 
