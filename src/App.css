@@ -33,33 +33,6 @@
     /* Keeps the reveal offsets from causing horizontal scrolling */
     overflow-x: clip;
 
-    .section-container {
-      padding: 3rem 2rem 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-
-      .section-heading {
-        color: var(--almost-white);
-        width: fit-content;
-        font-size: 6rem;
-        font-weight: bold;
-        align-self: center;
-        text-align: center;
-      }
-    }
-
-    .the-contact .btn {
-      font-size: 1rem;
-      padding: 0.6rem 1.3rem;
-      cursor: pointer;
-      font-weight: bold;
-      color: var(--main-color-light);
-      background-color: var(--text-h);
-      border-radius: calc(5*var(--main-border-radius));
-      border: 4px solid var(--main-color);
-    }
-
     .social-links {
       .icon-btn {
         border: 3px solid var(--main-color);
@@ -85,54 +58,6 @@
     .the-home .bio .social-links .icon-btn:hover {
       transform: scale(1.03);
       background-color: #4f39f6;
-    }
-
-    .the-contact {
-      form {
-
-        .input-group,
-        .input-group-message {
-          display: flex;
-          flex-direction: column;
-          gap: 2rem;
-          align-items: center;
-        }
-
-        .input-group .input-box input,
-        .input-group-message textarea {
-          padding: 1.2rem;
-          font-size: 1.2rem;
-          color: var(--almost-white);
-          resize: none;
-          outline: none;
-          border-radius: calc(var(--main-border-radius) + 1rem);
-          border: 2px solid var(--main-color);
-          background-color: var(--color-gray-800);
-        }
-
-        .input-group {
-          gap: 1.25rem;
-
-          .input-box {
-            display: flex;
-            flex-direction: column;
-            flex-wrap: wrap;
-            gap: 1.25rem;
-          }
-        }
-
-        .input-group-message {
-          .btn {
-            color: var(--almost-white);
-            background-color: var(--main-color);
-            box-shadow: 0 0 6px var(--main-color);
-          }
-
-          .btn:hover {
-            transform: scale(1.03);
-          }
-        }
-      }
     }
 
     .the-footer {
@@ -177,36 +102,6 @@
       }
     }
 
-    .section-container {
-      gap: 3rem;
-      padding: 3rem;
-
-      .section-heading {
-        font-size: 8rem;
-      }
-    }
-
-    .the-contact {
-      form {
-
-        .input-group,
-        .input-group-message {
-          gap: 2rem;
-        }
-
-        .input-group .input-box input,
-        .input-group-message textarea,
-        .input-group-message .btn {
-          padding: 2rem;
-          font-size: 2rem;
-        }
-
-        .input-group .input-box {
-          gap: 1.9rem;
-        }
-      }
-    }
-
     .the-footer {
       padding: 3rem 2rem 2rem;
 
@@ -230,129 +125,6 @@
   }
 }
 
-@media(max-width:768px) {
-  #root .the-portfolio-container {
-    .section-container .section-heading {
-      font-size: 5rem;
-    }
-
-    .the-contact {
-      padding: 2rem 1rem 3rem;
-
-      form {
-        gap: 0.5rem;
-
-        .input-group .input-box input,
-        .input-group-message textarea {
-          font-size: 1.1rem;
-        }
-
-        .input-group {
-          justify-content: center;
-          gap: 1rem;
-
-          .input-box {
-            gap: 1rem;
-          }
-        }
-
-        .input-group-message {
-          gap: 0.75rem;
-
-          .btn {
-            width: 100%;
-            border-radius: calc(var(--main-border-radius) + 1rem);
-          }
-        }
-
-      }
-    }
-  }
-}
-
-@media(max-width:680px) {
-  #root .the-portfolio-container {
-    .section-container {
-      padding: 3.5rem 1rem 2rem;
-    }
-
-    .the-contact {
-      padding: 3rem 2rem 2rem;
-
-      form {
-        gap: 1rem;
-        flex-direction: column;
-
-        .input-group,
-        .input-group-message {
-          width: 95%;
-          height: auto;
-          gap: 1rem;
-        }
-
-        .input-group {
-          flex-direction: row;
-
-          .input-box {
-            width: 50%;
-
-            input {
-              width: 100%;
-            }
-          }
-        }
-
-        .input-group-message textarea {
-          width: 100%;
-        }
-
-      }
-    }
-  }
-}
-
-@media(max-width:616px) {
-  #root .the-portfolio-container {
-
-    .section-container .section-heading {
-      font-size: 4.5rem;
-    }
-
-    .the-contact {
-      padding-top: 3rem;
-
-      .section-heading {
-        line-height: 1;
-      }
-
-      form {
-        width: 96%;
-        align-self: center;
-
-        .input-group,
-        .input-group-message,
-        .input-group .input-box {
-          gap: 0.75rem;
-        }
-
-        .input-group {
-          flex-direction: column;
-
-          .input-box {
-            width: 100%;
-          }
-        }
-
-        .input-group-message {
-          .btn {
-            width: fit-content;
-          }
-        }
-      }
-    }
-  }
-}
-
 @media(max-width:492px) {
   #root .the-portfolio-container {
     .social-links {
@@ -366,25 +138,6 @@
 
         .icon {
           font-size: 2.6rem;
-        }
-      }
-    }
-
-    .section-container {
-      padding-top: 3rem;
-
-      .section-heading {
-        font-size: 3.25rem;
-      }
-    }
-
-    .the-contact {
-
-      form {
-
-        .input-group .input-box input,
-        .input-group-message textarea {
-          padding: 0.6rem 0.9rem;
         }
       }
     }
@@ -429,10 +182,6 @@
 
 @media(max-width:380px) {
   #root .the-portfolio-container {
-    .section-container .section-heading {
-      font-size: 3rem;
-    }
-
     .the-footer {
       .links {
         gap: 0.25rem;
@@ -447,10 +196,6 @@
 
 @media(max-width:322px) {
   #root .the-portfolio-container {
-    .section-container .section-heading {
-      font-size: 2.6rem;
-    }
-
     .the-footer {
       .links {
         gap: 0;
