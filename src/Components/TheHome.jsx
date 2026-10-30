@@ -15,13 +15,12 @@ const heroButtonSize =
 const TheHome = () => {
   return (
     <div
-      // "the-home" and "bio" stay as hooks for SocialLinks' remaining CSS until it's migrated
-      className="the-home relative flex items-center justify-evenly gap-7 overflow-hidden px-8 py-16 pt-22 from-1537:justify-center from-1537:gap-[5%] from-1537:pt-20 from-1537:text-[1.7rem] from-2000:pt-24 from-2000:text-[2rem] upto-768:flex-col-reverse upto-768:gap-8 upto-768:px-4 upto-768:pt-20 upto-768:pb-12 upto-492:text-[0.95rem]"
+      className="relative flex items-center justify-evenly gap-7 overflow-hidden px-8 py-16 pt-22 from-1537:justify-center from-1537:gap-[5%] from-1537:pt-20 from-1537:text-[1.7rem] from-2000:pt-24 from-2000:text-[2rem] upto-768:flex-col-reverse upto-768:gap-8 upto-768:px-4 upto-768:pt-20 upto-768:pb-12 upto-492:text-[0.95rem]"
       id="Home"
     >
       <Reveal
         direction="left"
-        className="bio relative flex h-full w-1/2 flex-col justify-center gap-2 text-white from-1537:gap-4 from-2000:gap-5 upto-932:w-[45%] upto-768:w-full upto-492:gap-[0.6rem]"
+        className="relative flex h-full w-1/2 flex-col justify-center gap-2 text-white from-1537:gap-4 from-2000:gap-5 upto-932:w-[45%] upto-768:w-full upto-492:gap-[0.6rem]"
       >
         <h1 className="text-[3rem] from-2000:text-[4rem] upto-492:text-[2.2rem] upto-434:text-[2rem]">
           Hi, I'm <span className="text-lavender">Saeed</span>
@@ -47,7 +46,7 @@ const TheHome = () => {
           ))}
         </ul>
 
-        <SocialLinks />
+        <SocialLinks variant="hero" />
 
         <div className="flex gap-5 upto-492:gap-2">
           <Button
