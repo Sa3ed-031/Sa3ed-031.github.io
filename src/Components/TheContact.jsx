@@ -127,7 +127,7 @@ const TheContact = ({ setFormModal }) => {
           Contact <span className="text-lavender">Me</span>
         </SectionTitle>
 
-        <p className="text-center text-lg text-white/90">
+        <p className="text-center text-lg text-cloud">
           Email me directly at{" "}
           <a
             href="mailto:saeedalhajwork@gmail.com"
@@ -229,7 +229,7 @@ const Field = ({ as = "input", className, ...props }) => {
   return (
     <Tag
       className={clsx(
-        "resize-none rounded-[1.4rem] border-2 border-indigo-deep bg-gray-800 p-[1.2rem] text-[1.2rem] text-white/90 outline-none from-1537:p-8 from-1537:text-[2rem] upto-768:text-[1.1rem] upto-680:w-full upto-492:px-[0.9rem] upto-492:py-[0.6rem]",
+        "resize-none rounded-[1.4rem] border-2 border-indigo-brand bg-surface p-[1.2rem] text-[1.2rem] text-cloud outline-none from-1537:p-8 from-1537:text-[2rem] upto-768:text-[1.1rem] upto-680:w-full upto-492:px-[0.9rem] upto-492:py-[0.6rem]",
         className,
       )}
       {...props}

@@ -6,7 +6,7 @@ const Card = ({ as = "div", className, ...props }) => {
   return (
     <Tag
       className={clsx(
-        "border-indigo-deep shadow-[0_0_10px_var(--color-indigo-deep)] hover:shadow-[0_0_25px_var(--color-indigo-deep)]",
+        "border-indigo-brand shadow-[0_0_10px_var(--color-indigo-brand)] hover:shadow-[0_0_25px_var(--color-indigo-brand)]",
         className,
       )}
       {...props}

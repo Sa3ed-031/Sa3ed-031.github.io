@@ -33,13 +33,10 @@ const timeline = [
 
 const TheEducation = () => {
   return (
-    <Section
-      id="Education"
-      className="bg-gray-800 upto-492:px-8 upto-492:py-12"
-    >
+    <Section id="Education" className="bg-surface upto-492:px-8 upto-492:py-12">
       <SectionTitle>Education</SectionTitle>
       {/* The ::before line runs down the middle (down the left edge on small screens) */}
-      <div className="relative m-auto flex max-w-7xl flex-col gap-6 before:absolute before:left-[calc(50%-10px)] before:h-full before:w-[10px] before:bg-indigo-deep upto-768:gap-8 upto-768:before:left-0">
+      <div className="relative m-auto flex max-w-7xl flex-col gap-6 before:absolute before:left-[calc(50%-10px)] before:h-full before:w-[10px] before:bg-indigo-brand upto-768:gap-8 upto-768:before:left-0">
         {timeline.map((item, index) => (
           // Odd items sit on the left of the line, even items on the right
           <TimelineItem key={item.date} {...item} isLeft={index % 2 === 0} />
@@ -60,20 +57,20 @@ const TimelineItem = ({ date, head, content, isLeft }) => {
     >
       <div
         className={clsx(
-          "absolute top-2.25 size-5 rounded-full bg-indigo-deep shadow-[0_0_25px_var(--color-indigo-deep),0_0_50px_var(--color-indigo-deep)] from-1537:top-[17.5px] from-1537:size-[25px] upto-768:left-0",
+          "absolute top-2.25 size-5 rounded-full bg-indigo-brand shadow-[0_0_25px_var(--color-indigo-brand),0_0_50px_var(--color-indigo-brand)] from-1537:top-[17.5px] from-1537:size-[25px] upto-768:left-0",
           isLeft
             ? "left-[calc(50%-20px)] from-1537:left-[calc(50%-25px)]"
             : "left-[calc(50%-10px)]",
         )}
       ></div>
-      <div className="w-fit rounded-[0.4rem] p-2 text-[20px] font-bold text-white/90 from-1537:text-[2.5rem]">
+      <div className="w-fit rounded-[0.4rem] p-2 text-[20px] font-bold text-cloud from-1537:text-[2.5rem]">
         {date}
       </div>
       <Card className="flex cursor-pointer flex-col gap-4 rounded-4xl border-[0.3rem] bg-navy px-8 py-[1.3rem] transition-all duration-400 ease-in-out hover:scale-103 from-1537:gap-6 upto-380:p-4">
-        <h3 className="text-[22px] font-medium text-white/90 from-1537:text-[3rem] upto-492:text-[1.3rem]">
+        <h3 className="text-[22px] font-medium text-cloud from-1537:text-[3rem] upto-492:text-[1.3rem]">
           {head}
         </h3>
-        <p className="leading-[22px] text-white/90 from-1537:text-[2rem] from-1537:leading-[1.6] upto-492:text-[0.9rem] upto-322:leading-[1.3]">
+        <p className="leading-[22px] text-cloud from-1537:text-[2rem] from-1537:leading-[1.6] upto-492:text-[0.9rem] upto-322:leading-[1.3]">
           {content}
         </p>
       </Card>

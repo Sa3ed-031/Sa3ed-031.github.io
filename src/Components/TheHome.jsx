@@ -20,7 +20,7 @@ const TheHome = () => {
     >
       <Reveal
         direction="left"
-        className="relative flex h-full w-1/2 flex-col justify-center gap-2 text-white from-1537:gap-4 from-2000:gap-5 upto-932:w-[45%] upto-768:w-full upto-492:gap-[0.6rem]"
+        className="relative flex h-full w-1/2 flex-col justify-center gap-2 text-cloud from-1537:gap-4 from-2000:gap-5 upto-932:w-[45%] upto-768:w-full upto-492:gap-[0.6rem]"
       >
         <h1 className="text-[3rem] from-2000:text-[4rem] upto-492:text-[2.2rem] upto-434:text-[2rem]">
           Hi, I'm <span className="text-lavender">Saeed</span>
@@ -53,15 +53,11 @@ const TheHome = () => {
             as="a"
             variant="primary"
             href="mailto:saeedalhajwork@gmail.com"
-            className={`hover:bg-indigo-deep hover:text-white/90 ${heroButtonSize}`}
+            className={heroButtonSize}
           >
             Hire
           </Button>
-          <Button
-            as="a"
-            href="#Contact"
-            className={`hover:bg-indigo-deep hover:text-white/90 ${heroButtonSize}`}
-          >
+          <Button as="a" href="#Contact" className={heroButtonSize}>
             Contact
           </Button>
         </div>
@@ -78,11 +74,11 @@ const TheHome = () => {
         className="relative flex h-full w-fit flex-col items-center justify-center upto-932:w-[55%] upto-768:w-full"
       >
         <div className="relative">
-          <div className="absolute top-[calc(50%+1rem)] left-1/2 z-0 aspect-square w-[83%] -translate-x-1/2 -translate-y-1/2 rotate-45 rounded-3xl bg-linear-to-br from-indigo-500 via-indigo-600 to-indigo-900 opacity-40 md:opacity-100"></div>
+          <div className="absolute top-[calc(50%+1rem)] left-1/2 z-0 aspect-square w-[83%] -translate-x-1/2 -translate-y-1/2 rotate-45 rounded-3xl bg-linear-to-br from-indigo-brand to-navy opacity-40 md:opacity-100"></div>
           <img
             src={MyProfile}
             alt="Saeed Al-Haj Hussein"
-            className="relative top-4 size-96 rounded-full shadow-[0_0_20px_var(--color-indigo-deep)] hover:shadow-[0_0_25px_var(--color-indigo-deep),0_0_50px_var(--color-indigo-deep),0_0_75px_var(--color-indigo-deep)] from-1537:size-120 from-2000:size-160 upto-492:size-80 upto-434:size-74 upto-380:size-66 upto-322:size-56"
+            className="relative top-4 size-96 rounded-full shadow-[0_0_20px_var(--color-indigo-brand)] hover:shadow-[0_0_25px_var(--color-indigo-brand),0_0_50px_var(--color-indigo-brand),0_0_75px_var(--color-indigo-brand)] from-1537:size-120 from-2000:size-160 upto-492:size-80 upto-434:size-74 upto-380:size-66 upto-322:size-56"
           />
         </div>
       </Reveal>

@@ -1,7 +1,7 @@
 import clsx from "clsx";
 
 const variants = {
-  filled: "border-lavender/45 bg-indigo-deep/18",
+  filled: "border-lavender/45 bg-indigo-brand/18",
   outline: "border-lavender/40",
 };
 

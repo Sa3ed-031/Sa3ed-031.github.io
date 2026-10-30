@@ -23,8 +23,8 @@ const TheSkills = () => {
 
 const SkillGroup = ({ title, skills }) => {
   return (
-    <Card className="flex h-full flex-col gap-4 rounded-3xl border-[0.2rem] bg-gray-800 p-6">
-      <h3 className="text-xl font-bold text-white/90">{title}</h3>
+    <Card className="flex h-full flex-col gap-4 rounded-3xl border-[0.2rem] bg-surface p-6">
+      <h3 className="text-xl font-bold text-cloud">{title}</h3>
       <ul className="flex flex-wrap gap-2">
         {skills.map(({ name, icon: Icon, learning }) => (
           <Chip
