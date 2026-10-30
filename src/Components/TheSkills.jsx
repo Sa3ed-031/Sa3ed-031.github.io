@@ -1,38 +1,47 @@
 import Reveal from "./Reveal";
+import Card from "./ui/Card";
+import Chip from "./ui/Chip";
+import Section from "./ui/Section";
+import SectionTitle from "./ui/SectionTitle";
 import { skillGroups } from "../data/skills";
 import staggerDelay from "../utils/staggerDelay";
 
 const TheSkills = () => {
   return (
-    <div className="the-skills section-container" id="Skills">
-      <Reveal as="h2" className="section-heading">
-        Skills
-      </Reveal>
-      <div className="skills-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-7xl mx-auto">
+    <Section id="Skills">
+      <SectionTitle>Skills</SectionTitle>
+      <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 from-1537:max-w-[1800px]">
         {skillGroups.map((group, index) => (
           <Reveal key={group.title} delay={staggerDelay(index)}>
             <SkillGroup title={group.title} skills={group.skills} />
           </Reveal>
         ))}
       </div>
-    </div>
+    </Section>
   );
 };
 
 const SkillGroup = ({ title, skills }) => {
   return (
-    <div className="skill-group h-full flex flex-col gap-4 p-6 rounded-3xl">
-      <h3 className="almost-white text-xl font-bold">{title}</h3>
-      <ul className="skill-chips flex flex-wrap gap-2">
+    <Card className="flex h-full flex-col gap-4 rounded-3xl border-[0.2rem] bg-gray-800 p-6">
+      <h3 className="text-xl font-bold text-white/90">{title}</h3>
+      <ul className="flex flex-wrap gap-2">
         {skills.map(({ name, icon: Icon, learning }) => (
-          <li key={name} className="flex items-center gap-1.5">
+          <Chip
+            key={name}
+            className="flex items-center gap-1.5 px-[0.9em] py-[0.3em] text-[0.9rem]"
+          >
             {Icon && <Icon aria-hidden="true" className="shrink-0" />}
             {name}
-            {learning && <span className="learning-badge">Learning</span>}
-          </li>
+            {learning && (
+              <span className="rounded-full border border-lavender px-[0.5em] text-[0.7rem] leading-[1.5] text-lavender">
+                Learning
+              </span>
+            )}
+          </Chip>
         ))}
       </ul>
-    </div>
+    </Card>
   );
 };
 
