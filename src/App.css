@@ -13,20 +13,6 @@
   transition: none;
 }
 
-.p-1rem-bold-white {
-  padding: 1rem;
-  font-weight: bold;
-  color: var(--almost-white);
-}
-
-.color-main {
-  color: var(--main-color-light);
-}
-
-.almost-white {
-  color: var(--almost-white);
-}
-
 #root {
   .the-portfolio-container {
     transition: all var(--main-duration) ease-in-out;
@@ -60,21 +46,9 @@
       background-color: #4f39f6;
     }
 
-    .the-footer {
-      background-color: var(--color-gray-800);
-
-      .social-links .icon-btn:hover {
-        transform: scale(1.02) translateY(-0.5rem);
-      }
-
-      .links a:hover {
-        color: var(--main-color-light);
-        border-bottom-color: var(--main-color-light);
-      }
-
-      p {
-        font-size: larger;
-      }
+    /* Footer variant of SocialLinks; moves into SocialLinks when it is migrated */
+    .the-footer .social-links .icon-btn:hover {
+      transform: scale(1.02) translateY(-0.5rem);
     }
   }
 }
@@ -82,10 +56,6 @@
 /* Media Queries */
 @media(min-width: 1537px) {
   #root .the-portfolio-container {
-
-    .the-footer .links a {
-      font-size: 2rem;
-    }
 
     .social-links {
       gap: 1.5rem;
@@ -99,14 +69,6 @@
         .icon {
           font-size: 5.1rem;
         }
-      }
-    }
-
-    .the-footer {
-      padding: 3rem 2rem 2rem;
-
-      p {
-        font-size: 2.3rem;
       }
     }
   }
@@ -141,22 +103,6 @@
         }
       }
     }
-
-    .the-footer {
-
-      .links {
-        gap: 0.5rem;
-
-        a {
-          padding: 0.5rem;
-          font-size: 1rem;
-        }
-      }
-
-      p {
-        font-size: 1.15rem;
-      }
-    }
   }
 }
 
@@ -171,42 +117,6 @@
         font-size: 2.4rem;
       }
     }
-
-    .the-footer {
-      p {
-        font-size: 1.1rem;
-      }
-    }
   }
 }
-
-@media(max-width:380px) {
-  #root .the-portfolio-container {
-    .the-footer {
-      .links {
-        gap: 0.25rem;
-      }
-
-      p {
-        font-size: 0.9rem;
-      }
-    }
-  }
-}
-
-@media(max-width:322px) {
-  #root .the-portfolio-container {
-    .the-footer {
-      .links {
-        gap: 0;
-      }
-
-      p {
-        font-size: 1rem;
-      }
-    }
-  }
-}
-
-/* Work Till Max-Width: 296px, But there is a problem with the Footer Paragraph */
-/* Footer Paragraph Problem was Successfully Solved. */
+
