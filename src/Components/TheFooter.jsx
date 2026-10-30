@@ -2,11 +2,8 @@ import SocialLinks from "./SocialLinks";
 
 const TheFooter = ({ headerLinks }) => {
   return (
-    <footer
-      // "the-footer" stays as a hook for SocialLinks' remaining CSS until it's migrated
-      className="the-footer relative bottom-0 flex flex-col items-center gap-2 bg-gray-800 p-4 from-1537:px-8 from-1537:pt-12 from-1537:pb-8"
-    >
-      <SocialLinks />
+    <footer className="relative bottom-0 flex flex-col items-center gap-2 bg-gray-800 p-4 from-1537:px-8 from-1537:pt-12 from-1537:pb-8">
+      <SocialLinks variant="footer" />
 
       <div className="flex gap-3.5 upto-492:gap-2 upto-380:gap-1 upto-322:gap-0">
         {headerLinks
