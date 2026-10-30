@@ -1,6 +1,4 @@
 @import "tailwindcss";
-/* Old stylesheet, emptied one component at a time while moving to Tailwind classes */
-@import "./App.css";
 
 @theme {
   --font-sans: "Poppins", sans-serif;

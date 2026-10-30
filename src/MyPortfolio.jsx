@@ -35,7 +35,8 @@ export default function MyPortfolio() {
     // reducedMotion="user" turns off transform & layout animations for users who ask for less motion
     <MotionConfig reducedMotion="user">
       <div
-        className="the-portfolio-container flex flex-col"
+        // overflow-x-clip keeps the reveal offsets from causing horizontal scrolling
+        className="flex flex-col overflow-x-clip transition-all duration-600 ease-in-out"
         onClick={() => {
           showDropDownHeader ? setShowDropDownHeader(false) : null;
           formModal.show ? setFormModal({ ...formModal, show: false }) : null;
