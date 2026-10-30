@@ -14,10 +14,6 @@
   transition: none;
 }
 
-h1 {
-  font-size: xxx-large;
-}
-
 .p-1rem-bold-white {
   padding: 1rem;
   font-weight: bold;
@@ -54,7 +50,6 @@ h1 {
       }
     }
 
-    .the-home .btn,
     .the-contact .btn {
       font-size: 1rem;
       padding: 0.6rem 1.3rem;
@@ -87,100 +82,10 @@ h1 {
       }
     }
 
-    .the-home {
-
-      .bio,
-      .profile {
-        width: 50%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-      }
-
-      .bio {
-
-        .text-animation {
-
-          ::before {
-            content: "";
-            color: var(--main-color-light);
-            animation: words 12s infinite;
-          }
-
-          ::after {
-            content: "";
-            position: absolute;
-            right: -8px;
-            width: calc(100% + 8px);
-            height: 100%;
-            border-left: 3px solid var(--color-gray-900);
-            background-color: var(--color-gray-900);
-            /* background-color: #694bc6; */
-            animation: cursor 0.6s infinite,
-              typing 20s steps(14) infinite;
-          }
-        }
-
-        p {
-          line-height: 1.3;
-          letter-spacing: 1px;
-        }
-
-        .tech-chips li {
-          padding: 0.25em 0.9em;
-          font-size: 0.8em;
-          font-weight: 600;
-          color: var(--main-color-light);
-          border: 1px solid rgba(165, 155, 255, 0.45);
-          border-radius: 999px;
-          background-color: rgba(57, 49, 212, 0.18);
-        }
-
-        .social-links {
-
-          .icon-btn:hover {
-            transform: scale(1.03);
-            background-color: #4f39f6;
-          }
-        }
-
-        .buttons {
-
-          button:hover,
-          a:hover {
-            color: var(--almost-white);
-            background-color: var(--main-color);
-          }
-
-          :first-child {
-            color: var(--text-h);
-            background-color: #4f39f6;
-            border-color: transparent;
-            box-shadow: 0 0 25px var(--main-color);
-          }
-        }
-
-      }
-
-      .profile {
-        width: fit-content;
-
-        img {
-          width: 24rem;
-          height: 24rem;
-          position: relative;
-          top: 1rem;
-          border-radius: 50%;
-          box-shadow: 0 0 20px var(--main-color);
-        }
-
-        img:hover {
-          box-shadow: 0 0 25px var(--main-color),
-            0 0 50px var(--main-color),
-            0 0 75px var(--main-color);
-        }
-      }
+    /* Hero variant of SocialLinks; moves into SocialLinks when it is migrated */
+    .the-home .bio .social-links .icon-btn:hover {
+      transform: scale(1.03);
+      background-color: #4f39f6;
     }
 
     .the-education {
@@ -516,31 +421,6 @@ h1 {
       font-size: 2rem;
     }
 
-    .the-home {
-      gap: 5%;
-      padding-top: 5rem;
-      font-size: 1.7rem;
-      justify-content: center;
-
-      .bio {
-        gap: 1rem;
-
-        h1 {
-          font-size: 3rem;
-        }
-
-        .buttons .btn {
-          font-size: 2rem;
-          padding: 1.5rem 2rem;
-        }
-      }
-
-      .profile img {
-        width: 30rem;
-        height: 30rem;
-      }
-    }
-
     .social-links {
       gap: 1.5rem;
 
@@ -652,30 +532,6 @@ h1 {
 
 @media(min-width:2000px) {
   #root .the-portfolio-container {
-
-    .the-home {
-      padding-top: 6rem;
-      font-size: 2rem;
-      justify-content: center;
-
-      .bio {
-        gap: 1.25rem;
-
-        h1 {
-          font-size: 4rem;
-        }
-
-        .buttons .btn {
-          font-size: 2.5rem;
-        }
-      }
-
-      .profile img {
-        width: 40rem;
-        height: 40rem;
-      }
-    }
-
     .social-links {
       gap: 1.4rem;
 
@@ -704,36 +560,8 @@ h1 {
   }
 }
 
-@media (max-width:932px) {
-  #root .the-portfolio-container {
-
-    .the-home {
-      .bio {
-        width: 45%;
-      }
-
-      .profile {
-        width: 55%;
-      }
-    }
-  }
-}
-
 @media(max-width:768px) {
   #root .the-portfolio-container {
-    .the-home {
-      flex-direction: column-reverse;
-      gap: 2rem;
-      height: 80%;
-      padding: 3rem 1rem;
-      padding-top: 5rem;
-
-      .bio,
-      .profile {
-        width: 100%;
-      }
-    }
-
     .section-container .section-heading {
       font-size: 5rem;
     }
@@ -917,33 +745,6 @@ h1 {
 
 @media(max-width:492px) {
   #root .the-portfolio-container {
-    .the-home {
-      /* padding-top: 3.5rem; */
-      font-size: 0.95rem;
-
-      .bio {
-        gap: 0.6rem;
-
-        h1 {
-          font-size: 2.2rem;
-        }
-
-        .buttons {
-          gap: 0.5rem;
-
-          .btn {
-            font-size: 1rem;
-            padding: 0.5rem 0.9rem;
-          }
-        }
-      }
-
-      .profile img {
-        width: 20rem;
-        height: 20rem;
-      }
-    }
-
     .social-links {
       gap: .5rem;
 
@@ -1029,33 +830,13 @@ h1 {
 @media(max-width:434px) {
   #root .the-portfolio-container {
 
-    .the-home {
-      .bio {
-        h1 {
-          font-size: xx-large;
-        }
+    .the-home .social-links .icon-btn {
+      width: 2.1rem;
+      height: 2.1rem;
 
-        .buttons .btn {
-          font-size: 0.9rem;
-        }
+      .icon {
+        font-size: 2.4rem;
       }
-
-      .social-links .icon-btn {
-        width: 2.1rem;
-        height: 2.1rem;
-
-        .icon {
-          font-size: 2.4rem;
-        }
-      }
-
-      .profile {
-        img {
-          width: 18.5rem;
-          height: 18.5rem;
-        }
-      }
-
     }
 
     .the-footer {
@@ -1068,16 +849,6 @@ h1 {
 
 @media(max-width:380px) {
   #root .the-portfolio-container {
-
-    .the-home {
-      .profile {
-        img {
-          width: 16.5rem;
-          height: 16.5rem;
-        }
-      }
-    }
-
     .section-container .section-heading {
       font-size: 3rem;
     }
@@ -1100,15 +871,6 @@ h1 {
 
 @media(max-width:322px) {
   #root .the-portfolio-container {
-    .the-home {
-      .profile {
-        img {
-          width: 14rem;
-          height: 14rem;
-        }
-      }
-    }
-
     .section-container .section-heading {
       font-size: 2.6rem;
     }
