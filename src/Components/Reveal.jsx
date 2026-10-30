@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { motion, useReducedMotion } from "motion/react";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
@@ -30,7 +31,8 @@ const Reveal = ({
 
   return (
     <MotionTag
-      className={`reveal ${className}`}
+      // Motion animates this element itself, so no CSS transition
+      className={clsx("transition-none", className)}
       initial={{ opacity: 0, ...offset }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
