@@ -1,12 +1,20 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import clsx from "clsx";
 import AutorenewIcon from "@mui/icons-material/Autorenew";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Reveal from "./Reveal";
+import Card from "./ui/Card";
+import Chip from "./ui/Chip";
+import Section from "./ui/Section";
+import SectionTitle from "./ui/SectionTitle";
 import projectsList from "../data/projects";
 import staggerDelay from "../utils/staggerDelay";
 
 const MotionDiv = motion.div;
+
+const activeFilter = "border-indigo-brand bg-indigo-brand text-white";
+const filterText = "cursor-pointer font-semibold text-lavender";
 
 // Featured projects first, otherwise keep the data order
 const sortedProjects = [...projectsList].sort(
@@ -81,23 +89,27 @@ const TheProjects = () => {
   };
 
   return (
-    <div className="the-projects section-container" id="Projects">
-      <Reveal as="h2" className="section-heading">
-        Projects
-      </Reveal>
+    <Section id="Projects" className="bg-gray-800">
+      <SectionTitle>Projects</SectionTitle>
 
-      <Reveal className="project-filters flex flex-col items-center gap-4 w-full max-w-7xl mx-auto">
+      <Reveal className="mx-auto flex w-full max-w-7xl flex-col items-center gap-4 from-1537:max-w-[1800px]">
         <div
           role="group"
           aria-label="Filter projects by type"
-          className="type-filter flex"
+          className="flex overflow-hidden rounded-full border-2 border-indigo-deep"
         >
           {typeFilters.map((filter) => (
             <button
               key={filter.value}
               type="button"
               aria-pressed={type === filter.value}
-              className={`filter-btn ${type === filter.value ? "active" : ""}`}
+              className={clsx(
+                filterText,
+                "px-[1.2rem] py-2 not-first:border-l-2",
+                type === filter.value
+                  ? activeFilter
+                  : "border-indigo-deep hover:bg-indigo-brand/25",
+              )}
               onClick={() => changeType(filter.value)}
             >
               {filter.label} ({filter.count})
@@ -108,34 +120,39 @@ const TheProjects = () => {
         <div
           role="group"
           aria-label="Filter projects by technology"
-          className="tech-filter flex flex-wrap justify-center gap-2"
+          className="flex flex-wrap justify-center gap-2"
         >
           {techOptions.map((tech) => (
             <button
               key={tech}
               type="button"
               aria-pressed={selectedTech.includes(tech)}
-              className={`filter-chip ${selectedTech.includes(tech) ? "active" : ""}`}
+              className={clsx(
+                filterText,
+                "rounded-full border px-[0.9rem] py-1 text-[0.9rem]",
+                selectedTech.includes(tech)
+                  ? activeFilter
+                  : "border-lavender/45 hover:bg-indigo-brand/25",
+              )}
               onClick={() => toggleTech(tech)}
             >
               {tech}
             </button>
           ))}
           {isFiltered && (
-            <button type="button" className="clear-btn" onClick={clearFilters}>
-              Clear
-            </button>
+            <ClearButton onClick={clearFilters}>Clear</ClearButton>
           )}
         </div>
       </Reveal>
 
-      <div className="projects-grid relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-7xl mx-auto">
+      <div className="relative mx-auto grid w-full max-w-7xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 from-1537:max-w-[1800px]">
         <AnimatePresence mode="popLayout" initial={false}>
           {filteredProjects.map((project, index) => (
             <MotionDiv
               key={project.id}
               layout="position"
-              className="motion-card"
+              // Motion animates this element itself, so no CSS transition
+              className="transition-none"
               initial={{ opacity: 0, scale: 0.92 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.92 }}
@@ -154,16 +171,27 @@ const TheProjects = () => {
       </div>
 
       {filteredProjects.length === 0 && (
-        <div className="projects-empty flex flex-col items-center gap-4 text-center">
-          <p className="almost-white text-lg">
+        <div className="flex flex-col items-center gap-4 text-center">
+          <p className="text-lg text-white/90">
             No projects match these filters.
           </p>
-          <button type="button" className="clear-btn" onClick={clearFilters}>
-            Clear filters
-          </button>
+          <ClearButton onClick={clearFilters}>Clear filters</ClearButton>
         </div>
       )}
-    </div>
+    </Section>
+  );
+};
+
+const ClearButton = (props) => {
+  return (
+    <button
+      type="button"
+      className={clsx(
+        filterText,
+        "px-[0.9rem] py-1 text-[0.9rem] underline underline-offset-4 hover:text-white/90",
+      )}
+      {...props}
+    />
   );
 };
 
@@ -175,16 +203,8 @@ const ProjectCard = ({ project, flipped, onFlip }) => {
   // Only move focus after a click, not when the filters reset the card
   const focusAfterFlip = useRef(false);
 
-  const {
-    id,
-    title,
-    subtitle,
-    type,
-    teamSize,
-    src,
-    highlights,
-    description,
-  } = project;
+  const { id, title, subtitle, type, teamSize, src, highlights, description } =
+    project;
 
   useEffect(() => {
     if (!focusAfterFlip.current) return;
@@ -198,80 +218,88 @@ const ProjectCard = ({ project, flipped, onFlip }) => {
   };
 
   // With reduced motion the faces cross-fade instead of rotating
-  const faceClass = shouldReduceMotion
-    ? "transition-opacity duration-300"
-    : "backface-hidden";
+  const faceClass = clsx(
+    "rounded-3xl border-[0.2rem] bg-navy [grid-area:1/1]",
+    shouldReduceMotion ? "transition-opacity duration-300" : "backface-hidden",
+  );
 
   return (
     <div className="h-full perspective-[1200px]">
       <div
-        className={`relative grid h-full transform-3d transition-transform duration-600 ease-in-out ${
-          flipped && !shouldReduceMotion ? "rotate-y-180" : ""
-        }`}
+        className={clsx(
+          "relative grid h-full transition-transform duration-600 ease-in-out transform-3d",
+          flipped && !shouldReduceMotion && "rotate-y-180",
+        )}
       >
-        <article
+        <Card
+          as="article"
           inert={flipped}
           aria-hidden={flipped}
-          className={`project-card flex flex-col overflow-hidden rounded-3xl [grid-area:1/1] ${faceClass} ${
-            shouldReduceMotion && flipped ? "opacity-0" : ""
-          }`}
+          className={clsx(
+            "group flex flex-col overflow-hidden",
+            faceClass,
+            shouldReduceMotion && flipped && "opacity-0",
+          )}
         >
-          <div className="project-preview aspect-video overflow-hidden">
+          <div className="aspect-video overflow-hidden">
             <img
               src={src}
               alt={`${title} – ${subtitle} homepage screenshot`}
               loading="lazy"
-              className="w-full h-full object-cover object-top"
+              className="h-full w-full object-cover object-top transition-transform duration-600 ease-out group-hover:scale-105"
             />
           </div>
 
-          <div className="flex flex-col flex-1 gap-3 p-5">
+          <div className="flex flex-1 flex-col gap-3 p-5">
             <div className="flex items-start justify-between gap-3">
               <div>
-                <h3 className="almost-white text-2xl font-extrabold">
+                <h3 className="text-2xl font-extrabold text-white/90">
                   {title}
                 </h3>
-                <p className="color-main text-sm font-semibold">{subtitle}</p>
+                <p className="text-sm font-semibold text-lavender">
+                  {subtitle}
+                </p>
               </div>
-              <span className="type-badge shrink-0">
+              <span className="shrink-0 rounded-full bg-indigo-deep px-[0.7rem] py-[0.15rem] text-[0.8rem] font-bold text-white/90">
                 {type === "team" ? `Team of ${teamSize}` : "Solo"}
               </span>
             </div>
 
-            <p className="almost-white">{description}</p>
+            <p className="text-white/90">{description}</p>
 
             <TechTags tech={project.tech} />
 
             <div className="mt-auto flex flex-wrap items-center gap-3 pt-2">
               <ProjectLinks project={project} />
-              <button
+              <FlipButton
                 ref={detailsButton}
-                type="button"
-                className="flip-btn ml-auto"
                 aria-expanded={flipped}
                 aria-controls={`${id}-details`}
                 aria-label={`Show details for ${title}`}
                 onClick={() => flip(true)}
               >
                 Details <AutorenewIcon fontSize="small" aria-hidden="true" />
-              </button>
+              </FlipButton>
             </div>
           </div>
-        </article>
+        </Card>
 
-        <article
+        <Card
+          as="article"
           id={`${id}-details`}
           inert={!flipped}
           aria-hidden={!flipped}
-          className={`project-card flex flex-col gap-4 overflow-hidden rounded-3xl p-5 [grid-area:1/1] ${faceClass} ${
-            shouldReduceMotion ? (flipped ? "" : "opacity-0") : "rotate-y-180"
-          }`}
+          className={clsx(
+            "flex flex-col gap-4 overflow-hidden p-5",
+            faceClass,
+            shouldReduceMotion ? !flipped && "opacity-0" : "rotate-y-180",
+          )}
         >
-          <h3 className="almost-white text-2xl font-extrabold">{title}</h3>
-          <h4 className="color-main font-bold uppercase tracking-wider text-sm">
+          <h3 className="text-2xl font-extrabold text-white/90">{title}</h3>
+          <h4 className="text-sm font-bold tracking-wider text-lavender uppercase">
             {type === "team" ? "My role" : "Highlights"}
           </h4>
-          <ul className="almost-white flex list-disc flex-col gap-2 pl-5">
+          <ul className="flex list-disc flex-col gap-2 pl-5 text-white/90">
             {highlights.map((highlight) => (
               <li key={highlight}>{highlight}</li>
             ))}
@@ -281,33 +309,50 @@ const ProjectCard = ({ project, flipped, onFlip }) => {
 
           <div className="mt-auto flex flex-wrap items-center gap-3 pt-2">
             <ProjectLinks project={project} />
-            <button
+            <FlipButton
               ref={backButton}
-              type="button"
-              className="flip-btn ml-auto"
               aria-expanded={flipped}
               aria-controls={`${id}-details`}
               aria-label={`Back to ${title} overview`}
               onClick={() => flip(false)}
             >
               <ArrowBackIcon fontSize="small" aria-hidden="true" /> Back
-            </button>
+            </FlipButton>
           </div>
-        </article>
+        </Card>
       </div>
     </div>
   );
 };
 
+const FlipButton = (props) => {
+  return (
+    <button
+      type="button"
+      className="ml-auto inline-flex cursor-pointer items-center gap-[0.3rem] font-bold text-lavender hover:text-white/90 focus-visible:text-white/90"
+      {...props}
+    />
+  );
+};
+
 const TechTags = ({ tech }) => {
   return (
-    <ul className="project-tags flex flex-wrap gap-1.5">
+    <ul className="flex flex-wrap gap-1.5">
       {tech.map((t) => (
-        <li key={t}>{t}</li>
+        <Chip
+          key={t}
+          variant="outline"
+          className="px-[0.6rem] py-[0.15rem] text-[0.75rem]"
+        >
+          {t}
+        </Chip>
       ))}
     </ul>
   );
 };
+
+const cardButton =
+  "rounded-full border-2 px-[1.1rem] py-[0.45rem] font-bold hover:border-indigo-brand hover:bg-indigo-brand hover:text-white";
 
 const ProjectLinks = ({ project: { title, live, code } }) => {
   return (
@@ -317,7 +362,10 @@ const ProjectLinks = ({ project: { title, live, code } }) => {
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`Open ${title} live demo`}
-        className="card-btn primary"
+        className={clsx(
+          cardButton,
+          "border-indigo-brand bg-indigo-brand text-white",
+        )}
       >
         Live Demo
       </a>
@@ -327,7 +375,7 @@ const ProjectLinks = ({ project: { title, live, code } }) => {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`View ${title} source code on GitHub`}
-          className="card-btn"
+          className={clsx(cardButton, "border-indigo-deep text-lavender")}
         >
           Code
         </a>

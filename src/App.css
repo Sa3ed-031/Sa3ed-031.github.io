@@ -9,8 +9,7 @@
 }
 
 /* Motion drives these elements itself, a CSS transition would make it lag */
-.reveal,
-.motion-card {
+.reveal {
   transition: none;
 }
 
@@ -142,127 +141,6 @@
         height: 100%;
         background-color: var(--main-color);
         left: calc(50% - 10px);
-      }
-    }
-
-    .the-projects {
-      background-color: var(--color-gray-800);
-
-      .type-filter {
-        border: 2px solid var(--main-color);
-        border-radius: 999px;
-        overflow: hidden;
-      }
-
-      .filter-btn,
-      .filter-chip,
-      .clear-btn {
-        font-weight: 600;
-        cursor: pointer;
-        color: var(--main-color-light);
-      }
-
-      .filter-btn {
-        padding: 0.5rem 1.2rem;
-      }
-
-      .filter-btn+.filter-btn {
-        border-left: 2px solid var(--main-color);
-      }
-
-      .filter-chip {
-        padding: 0.25rem 0.9rem;
-        font-size: 0.9rem;
-        border: 1px solid rgba(165, 155, 255, 0.45);
-        border-radius: 999px;
-      }
-
-      .filter-btn:hover,
-      .filter-chip:hover {
-        background-color: rgba(79, 57, 246, 0.25);
-      }
-
-      .filter-btn.active,
-      .filter-chip.active {
-        color: #fff;
-        background-color: #4f39f6;
-        border-color: #4f39f6;
-      }
-
-      .clear-btn {
-        padding: 0.25rem 0.9rem;
-        font-size: 0.9rem;
-        text-decoration: underline;
-        text-underline-offset: 4px;
-      }
-
-      .clear-btn:hover {
-        color: var(--almost-white);
-      }
-
-      .project-card {
-        border: 0.2rem solid var(--main-color);
-        background-color: var(--color-gray-900);
-        box-shadow: 0 0 10px var(--main-color);
-
-        .project-preview img {
-          transition: transform var(--main-duration) ease-out;
-        }
-
-        .type-badge {
-          padding: 0.15rem 0.7rem;
-          font-size: 0.8rem;
-          font-weight: 700;
-          color: var(--almost-white);
-          border-radius: 999px;
-          background-color: var(--main-color);
-        }
-
-        .project-tags li {
-          padding: 0.15rem 0.6rem;
-          font-size: 0.75rem;
-          font-weight: 600;
-          color: var(--main-color-light);
-          border: 1px solid rgba(165, 155, 255, 0.4);
-          border-radius: 999px;
-        }
-
-        .flip-btn {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.3rem;
-          font-weight: 700;
-          cursor: pointer;
-          color: var(--main-color-light);
-        }
-
-        .flip-btn:hover,
-        .flip-btn:focus-visible {
-          color: var(--almost-white);
-        }
-
-        .card-btn {
-          padding: 0.45rem 1.1rem;
-          font-weight: 700;
-          color: var(--main-color-light);
-          border: 2px solid var(--main-color);
-          border-radius: 999px;
-        }
-
-        .card-btn.primary,
-        .card-btn:hover {
-          color: #fff;
-          background-color: #4f39f6;
-          border-color: #4f39f6;
-        }
-      }
-
-      .project-card:hover {
-        box-shadow: 0 0 25px var(--main-color);
-
-        .project-preview img {
-          transform: scale(1.05);
-        }
       }
     }
 
@@ -711,14 +589,6 @@
         font-size: 1rem;
       }
     }
-  }
-}
-
-@media(min-width: 1537px) {
-
-  #root .the-portfolio-container .project-filters,
-  #root .the-portfolio-container .projects-grid {
-    max-width: 1800px;
   }
 }
 
