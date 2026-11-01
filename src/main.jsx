@@ -1,6 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
+
 // Self-hosted Poppins: Latin subset only, and only the weights the site uses (font-extrabold falls back to 700)
 import "@fontsource/poppins/latin-400.css";
 import "@fontsource/poppins/latin-500.css";
