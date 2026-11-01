@@ -16,8 +16,14 @@
   --color-cloud: #edf0f8;
   --color-signal: #4ade80;
 
-  --animate-words: words 12s infinite;
-  --animate-typing: cursor 0.6s infinite, typing 20s steps(14) infinite;
+  /* Typewriter cursor in the hero */
+  --animate-blink: blink 1s step-end infinite;
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
 }
 
 /* The site's original breakpoints, kept exact so nothing shifts.
@@ -74,57 +80,5 @@
 @media (max-width: 616px) {
   ::-webkit-scrollbar {
     width: 0.6rem;
-  }
-}
-
-/* Hero typing effect: cycles the role text, a navy block wipes it like a cursor */
-@keyframes cursor {
-  to {
-    border-left: 2px solid var(--color-indigo-brand);
-  }
-}
-
-@keyframes words {
-  0%,
-  33% {
-    content: "Front-End Developer";
-  }
-
-  34%,
-  67% {
-    content: "React Developer";
-  }
-
-  68%,
-  100% {
-    content: "Web Designer";
-  }
-}
-
-@keyframes typing {
-
-  10%,
-  15%,
-  30%,
-  35%,
-  50%,
-  55%,
-  70%,
-  75%,
-  90%,
-  95% {
-    width: 0;
-  }
-
-  5%,
-  20%,
-  25%,
-  40%,
-  45%,
-  60%,
-  65%,
-  80%,
-  85% {
-    width: calc(100% + 8px);
   }
 }

@@ -1,8 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, m, useReducedMotion } from "motion/react";
 import clsx from "clsx";
-import AutorenewIcon from "@mui/icons-material/Autorenew";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { MdArrowBack, MdAutorenew } from "react-icons/md";
 import Reveal from "./Reveal";
 import Card from "./ui/Card";
 import Chip from "./ui/Chip";
@@ -11,7 +10,10 @@ import SectionTitle from "./ui/SectionTitle";
 import projectsList from "../data/projects";
 import staggerDelay from "../utils/staggerDelay";
 
-const MotionDiv = motion.div;
+const MotionDiv = m.div;
+
+// Same size as MUI's fontSize="small" icons
+const flipIconSize = "1.25rem";
 
 const activeFilter = "border-indigo-brand bg-indigo-brand text-cloud";
 const filterText = "cursor-pointer font-semibold text-lavender";
@@ -244,6 +246,10 @@ const ProjectCard = ({ project, flipped, onFlip }) => {
               src={src}
               alt={`${title} – ${subtitle} homepage screenshot`}
               loading="lazy"
+              decoding="async"
+              // The aspect-video box already reserves the space; these just give the browser the ratio
+              width={1280}
+              height={720}
               className="h-full w-full object-cover object-top transition-transform duration-600 ease-out group-hover:scale-105"
             />
           </div>
@@ -274,7 +280,12 @@ const ProjectCard = ({ project, flipped, onFlip }) => {
                 aria-label={`Show details for ${title}`}
                 onClick={() => flip(true)}
               >
-                Details <AutorenewIcon fontSize="small" aria-hidden="true" />
+                Details{" "}
+                <MdAutorenew
+                  size={flipIconSize}
+                  aria-hidden="true"
+                  className="shrink-0"
+                />
               </FlipButton>
             </div>
           </div>
@@ -312,7 +323,12 @@ const ProjectCard = ({ project, flipped, onFlip }) => {
               aria-label={`Back to ${title} overview`}
               onClick={() => flip(false)}
             >
-              <ArrowBackIcon fontSize="small" aria-hidden="true" /> Back
+              <MdArrowBack
+                size={flipIconSize}
+                aria-hidden="true"
+                className="shrink-0"
+              />{" "}
+              Back
             </FlipButton>
           </div>
         </Card>

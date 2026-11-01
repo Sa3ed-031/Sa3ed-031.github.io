@@ -1,12 +1,14 @@
 import Reveal from "./Reveal";
 import SocialLinks from "./SocialLinks";
+import Typewriter from "./Typewriter";
 import Button from "./ui/Button";
 import Chip from "./ui/Chip";
-import MyProfile from "../assets/images/profile.jpg";
+import MyProfile from "../assets/images/profile.webp";
 import myCV from "../assets/Sa3ed-CV.pdf";
 
-// Only the main tools; the full grouped list lives in the Skills section
 const techStack = ["React", "Tailwind", "Firebase", "Redux", "MUI"];
+
+const roles = ["Front-End Developer", "React Developer", "Web Designer"];
 
 // Hero buttons grow on big screens and shrink on phones
 const heroButtonSize =
@@ -18,18 +20,18 @@ const TheHome = () => {
       className="relative flex items-center justify-evenly gap-7 overflow-hidden px-8 py-16 pt-22 from-1537:justify-center from-1537:gap-[5%] from-1537:pt-20 from-1537:text-[1.7rem] from-2000:pt-24 from-2000:text-[2rem] upto-768:flex-col-reverse upto-768:gap-8 upto-768:px-4 upto-768:pt-20 upto-768:pb-12 upto-492:text-[0.95rem]"
       id="Home"
     >
+      {/* The hero only slides in (no fade) so it is painted right away */}
       <Reveal
         direction="left"
+        fade={false}
         className="relative flex h-full w-1/2 flex-col justify-center gap-2 text-cloud from-1537:gap-4 from-2000:gap-5 upto-932:w-[45%] upto-768:w-full upto-492:gap-[0.6rem]"
       >
-        <h1 className="text-[3rem] from-2000:text-[4rem] upto-492:text-[2.2rem] upto-434:text-[2rem]">
-          Hi, I'm <span className="text-lavender">Saeed</span>
+        <h1 className="text-[3rem] leading-[1.2] text-balance from-2000:text-[4rem] upto-492:text-[2.2rem] upto-434:text-[2rem] upto-380:text-[1.85rem]">
+          Hi, I'm <span className="text-lavender">Saeed Al-Haj Hussein</span>
         </h1>
 
-        {/* The role text comes from the "words" keyframes; a navy block wipes it like a typing cursor */}
         <span>
-          I'm a{" "}
-          <span className="relative font-bold before:animate-words before:text-lavender after:absolute after:-right-2 after:h-full after:w-[calc(100%+8px)] after:animate-typing after:border-l-3 after:border-navy after:bg-navy"></span>
+          I'm a <Typewriter words={roles} className="font-bold text-lavender" />
         </span>
 
         <p className="leading-[1.3] tracking-[1px]">
@@ -61,7 +63,6 @@ const TheHome = () => {
             Contact
           </Button>
         </div>
-        {/* Block wrapper keeps the old line height around the button on big screens */}
         <div>
           <Button as="a" href={myCV} download className="inline-block">
             Download CV
@@ -71,14 +72,23 @@ const TheHome = () => {
 
       <Reveal
         direction="right"
-        className="relative flex h-full w-fit flex-col items-center justify-center upto-932:w-[55%] upto-768:w-full"
+        fade={false}
+        className="relative flex h-full w-fit flex-col items-center justify-center py-10 upto-932:w-[55%] upto-768:w-full"
       >
-        <div className="relative">
-          <div className="absolute top-[calc(50%+1rem)] left-1/2 z-0 aspect-square w-[83%] -translate-x-1/2 -translate-y-1/2 rotate-45 rounded-3xl bg-linear-to-br from-indigo-brand to-navy opacity-40 md:opacity-100"></div>
+        <div className="relative grid place-items-center">
+          <div
+            aria-hidden="true"
+            className="col-start-1 row-start-1 aspect-square w-[85%] rotate-45 rounded-3xl bg-linear-to-br from-indigo-brand to-indigo-brand/50 opacity-40 md:opacity-100"
+          />
+          {/* This is the LCP element: load it first and never lazily */}
           <img
             src={MyProfile}
             alt="Saeed Al-Haj Hussein"
-            className="relative top-4 size-96 rounded-full shadow-[0_0_20px_var(--color-indigo-brand)] hover:shadow-[0_0_25px_var(--color-indigo-brand),0_0_50px_var(--color-indigo-brand),0_0_75px_var(--color-indigo-brand)] from-1537:size-120 from-2000:size-160 upto-492:size-80 upto-434:size-74 upto-380:size-66 upto-322:size-56"
+            width={800}
+            height={800}
+            fetchPriority="high"
+            decoding="async"
+            className="relative col-start-1 row-start-1 size-96 rounded-full shadow-[0_0_20px_var(--color-indigo-brand)] hover:shadow-[0_0_25px_var(--color-indigo-brand),0_0_50px_var(--color-indigo-brand),0_0_75px_var(--color-indigo-brand)] from-1537:size-120 from-2000:size-160 upto-492:size-80 upto-434:size-74 upto-380:size-66 upto-322:size-56"
           />
         </div>
       </Reveal>

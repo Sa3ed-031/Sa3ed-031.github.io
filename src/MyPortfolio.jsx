@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { MotionConfig } from "motion/react";
+// domMax (not domAnimation) because the project grid uses `layout` animations
+import { LazyMotion, MotionConfig, domMax } from "motion/react";
 
 import TheHome from "./Components/TheHome";
 import TheSkills from "./Components/TheSkills";
@@ -17,7 +18,7 @@ const headerLinks = [
   "Services",
   "Projects",
   "Education",
-  //  "Contact"
+  "Contact",
 ];
 
 export default function MyPortfolio() {
@@ -33,33 +34,36 @@ export default function MyPortfolio() {
 
   return (
     // reducedMotion="user" turns off transform & layout animations for users who ask for less motion
-    <MotionConfig reducedMotion="user">
-      <div
-        // overflow-x-clip keeps the reveal offsets from causing horizontal scrolling
-        className="flex flex-col overflow-x-clip transition-all duration-600 ease-in-out"
-        onClick={() => {
-          showDropDownHeader ? setShowDropDownHeader(false) : null;
-          formModal.show ? setFormModal({ ...formModal, show: false }) : null;
-        }}
-      >
-        <TheHeader
-          headerLinks={headerLinks}
-          showDropDownHeader={showDropDownHeader}
-          setShowDropDownHeader={setShowDropDownHeader}
-        />
-        <TheHome />
-        <TheSkills />
-        <TheServices />
-        <TheProjects />
-        <TheEducation />
-        <TheContact setFormModal={setFormModal} />
-        <TheFooter headerLinks={headerLinks} />
+    // strict: only the light `m.*` components are allowed, never the full `motion.*`
+    <LazyMotion features={domMax} strict>
+      <MotionConfig reducedMotion="user">
+        <div
+          // overflow-x-clip keeps the reveal offsets from causing horizontal scrolling
+          className="flex flex-col overflow-x-clip transition-all duration-600 ease-in-out"
+          onClick={() => {
+            showDropDownHeader ? setShowDropDownHeader(false) : null;
+            formModal.show ? setFormModal({ ...formModal, show: false }) : null;
+          }}
+        >
+          <TheHeader
+            headerLinks={headerLinks}
+            showDropDownHeader={showDropDownHeader}
+            setShowDropDownHeader={setShowDropDownHeader}
+          />
+          <TheHome />
+          <TheSkills />
+          <TheServices />
+          <TheProjects />
+          <TheEducation />
+          <TheContact setFormModal={setFormModal} />
+          <TheFooter headerLinks={headerLinks} />
 
-        <RecordResponse
-          isVisible={formModal.show}
-          message={formModal.message}
-        />
-      </div>
-    </MotionConfig>
+          <RecordResponse
+            isVisible={formModal.show}
+            message={formModal.message}
+          />
+        </div>
+      </MotionConfig>
+    </LazyMotion>
   );
 }

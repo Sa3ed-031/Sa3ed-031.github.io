@@ -1,6 +1,5 @@
 import clsx from "clsx";
-import IconButton from "@mui/material/IconButton";
-import TableRowsIcon from "@mui/icons-material/TableRows";
+import { MdTableRows } from "react-icons/md";
 
 const TheHeader = ({
   headerLinks,
@@ -13,31 +12,32 @@ const TheHeader = ({
         <span className="text-lavender">Saeed</span> Al-Haj Hussein
       </div>
 
-      {/* "!" because MUI's own styles load outside Tailwind's layers and would win otherwise */}
-      <IconButton
+      {/* Same size and round hover highlight as the old MUI IconButton */}
+      <button
+        type="button"
         aria-label="Toggle navigation menu"
         aria-expanded={showDropDownHeader}
-        className="hidden! text-indigo-brand! transition-all! duration-600! ease-in-out! upto-655:block!"
+        className="hidden cursor-pointer rounded-full p-2 text-[1.5rem] text-indigo-brand transition-all duration-600 ease-in-out hover:bg-black/4 upto-655:block"
         onClick={() => {
           setShowDropDownHeader((prev) => !prev);
         }}
       >
-        <TableRowsIcon />
-      </IconButton>
+        <MdTableRows aria-hidden="true" />
+      </button>
 
       <div
         className={clsx(
           "relative flex gap-3.5 upto-768:gap-0",
           // Below 655px the links become a dropdown under the header
-          "upto-655:absolute upto-655:top-full upto-655:right-0 upto-655:w-full upto-655:flex-col upto-655:gap-2 upto-655:overflow-hidden upto-655:border-3 upto-655:border-indigo-brand/50 upto-655:bg-surface/92",
-          showDropDownHeader ? "upto-655:flex" : "upto-655:hidden",
+          "max-md:absolute max-md:top-full max-md:right-0 max-md:w-full max-md:flex-col max-md:gap-2 max-md:overflow-hidden max-md:border-3 max-md:border-indigo-brand/50 max-md:bg-surface/92",
+          showDropDownHeader ? "max-md:flex" : "max-md:hidden",
         )}
       >
         {headerLinks.map((link) => (
           <a
             key={link}
             href={`#${link}`}
-            className="h-[98%] border-b-[0.1rem] border-b-transparent p-4 text-[1.1rem] font-bold text-cloud hover:border-b-lavender hover:text-lavender from-1537:text-[2rem] upto-655:transition-all upto-655:duration-400 upto-655:ease-in-out upto-655:last:hover:border-transparent"
+            className="h-[98%] border-b-[0.1rem] border-b-transparent p-4 px-2.5 text-[1.1rem] font-bold text-cloud hover:border-b-lavender hover:text-lavender from-1537:text-[2rem] upto-655:transition-all upto-655:duration-400 upto-655:ease-in-out upto-655:last:hover:border-transparent"
           >
             {link}
           </a>

@@ -1,19 +1,19 @@
 import clsx from "clsx";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import FacebookIcon from "@mui/icons-material/Facebook";
+import { FaGithub } from "react-icons/fa6";
+import { RiFacebookBoxFill, RiLinkedinBoxFill } from "react-icons/ri";
 
+// Remix's square logos sit on the same 24px grid as the old MUI icons, so they fill the circle the same way
 const homeLinks = [
   {
     name: "LinkedIn",
     url: "https://www.linkedin.com/in/sa3ed-al-haj-hussein/",
-    Icon: LinkedInIcon,
+    Icon: RiLinkedinBoxFill,
   },
-  { name: "GitHub", url: "https://github.com/Sa3ed-031", Icon: GitHubIcon },
+  { name: "GitHub", url: "https://github.com/Sa3ed-031", Icon: FaGithub },
   {
     name: "Facebook",
     url: "https://www.facebook.com/saed.alhajhosen",
-    Icon: FacebookIcon,
+    Icon: RiFacebookBoxFill,
   },
 ];
 
@@ -42,8 +42,8 @@ const SocialLinks = ({ variant }) => {
           )}
         >
           <link.Icon
-            fontSize="inherit"
-            className="text-indigo-brand group-hover:text-navy"
+            aria-hidden="true"
+            className="shrink-0 text-indigo-brand group-hover:text-navy"
           />
         </a>
       ))}
