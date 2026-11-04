@@ -38,7 +38,6 @@ export default function MyPortfolio() {
     <LazyMotion features={domMax} strict>
       <MotionConfig reducedMotion="user">
         <div
-          // overflow-x-clip keeps the reveal offsets from causing horizontal scrolling
           className="flex flex-col overflow-x-clip transition-all duration-600 ease-in-out"
           onClick={() => {
             showDropDownHeader ? setShowDropDownHeader(false) : null;

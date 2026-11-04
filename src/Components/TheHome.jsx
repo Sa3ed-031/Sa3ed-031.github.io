@@ -1,13 +1,12 @@
-import Reveal from "./Reveal";
-import SocialLinks from "./SocialLinks";
-import Typewriter from "./Typewriter";
-import Button from "./ui/Button";
 import Chip from "./ui/Chip";
-import MyProfile from "../assets/images/profile.webp";
+import Reveal from "./Reveal";
+import Button from "./ui/Button";
+import Typewriter from "./Typewriter";
+import SocialLinks from "./SocialLinks";
 import myCV from "../assets/Sa3ed-CV.pdf";
+import MyProfile from "../assets/images/profile.webp";
 
 const techStack = ["React", "Tailwind", "Firebase", "Redux", "MUI"];
-
 const roles = ["Front-End Developer", "React Developer", "Web Designer"];
 
 // Hero buttons grow on big screens and shrink on phones
