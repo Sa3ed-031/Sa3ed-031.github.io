@@ -9,7 +9,6 @@ import MyProfile from "../assets/images/profile.webp";
 const techStack = ["React", "Tailwind", "Firebase", "Redux", "MUI"];
 const roles = ["Front-End Developer", "React Developer", "Web Designer"];
 
-// Hero buttons grow on big screens and shrink on phones
 const heroButtonSize =
   "from-1537:px-8 from-1537:py-6 from-1537:text-[2rem] from-2000:text-[2.5rem] upto-492:px-[0.9rem] upto-492:py-2 upto-492:text-[1rem] upto-434:text-[0.9rem]";
 
