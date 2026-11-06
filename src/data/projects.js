@@ -1,5 +1,5 @@
 // Plain screenshots of each live site (the *.png social images already contain the title)
-import articles from "../assets/images/screenshots/articles-blog-screenshot.jpg";
+import articles from "../assets/images/screenshots/articles-blog-screenshot.png";
 import whatsapp from "../assets/images/screenshots/whatsapp-clone-screenshot.jpg";
 import carpentry from "../assets/images/screenshots/archi-carpenter-screenshot.jpg";
 import rennello from "../assets/images/screenshots/rennello-screenshot.jpg";
@@ -102,18 +102,22 @@ const projectsList = [
     featured: false,
   },
   {
-    id: "articles-blog",
+    id: "tech-insight",
     title: "Tech Insight",
     subtitle: "Tech Articles Blog",
     type: "solo",
     teamSize: null,
     src: articles,
-    live: "https://sa3ed-articles-blog-project.netlify.app",
-    code: null,
-    tech: ["React", "Context API", "CSS", "Styled Components"],
+    live: "https://sa3ed-tech-insights-articles.netlify.app",
+    code: "https://github.com/Sa3ed-031/tech-insight-articles",
+    tech: ["React", "React Router", "Context API", "CSS Modules", "API"],
     description:
-      "Responsive tech articles blog with search, filters and light/dark mode.",
-    highlights: ["List and grid views", "Light and dark mode"],
+      "Responsive tech blog powered by the DEV Community API, with list and grid views, bookmarks, filters, pagination and light/dark mode.",
+    highlights: [
+      "Live articles and full article pages from the DEV Community API, credited to their authors",
+      "List and grid views, filters, pagination and bookmarks with a live counter",
+      "Light/dark mode with CSS variables, and per-component CSS Modules",
+    ],
     featured: false,
   },
 ];
