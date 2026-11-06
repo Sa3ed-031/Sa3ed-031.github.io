@@ -17,7 +17,7 @@ const TheHeader = ({
         type="button"
         aria-label="Toggle navigation menu"
         aria-expanded={showDropDownHeader}
-        className="hidden cursor-pointer rounded-full p-2 text-[1.5rem] text-indigo-brand transition-all duration-600 ease-in-out hover:bg-black/4 upto-655:block"
+        className="hidden cursor-pointer rounded-full p-2 text-[1.5rem] text-indigo-brand transition-all duration-600 ease-in-out hover:bg-black/4 upto-768:block"
         onClick={() => {
           setShowDropDownHeader((prev) => !prev);
         }}

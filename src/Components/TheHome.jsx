@@ -15,7 +15,7 @@ const heroButtonSize =
 const TheHome = () => {
   return (
     <div
-      className="relative flex items-center justify-evenly gap-7 overflow-hidden px-8 py-16 pt-22 from-1537:justify-center from-1537:gap-[5%] from-1537:pt-20 from-1537:text-[1.7rem] from-2000:pt-24 from-2000:text-[2rem] upto-768:flex-col-reverse upto-768:gap-8 upto-768:px-4 upto-768:pt-20 upto-768:pb-12 upto-492:text-[0.95rem]"
+      className="relative flex items-center justify-evenly gap-7 overflow-hidden px-8 pt-22 from-1537:justify-center from-1537:gap-[5%] from-1537:pt-20 from-1537:text-[1.7rem] from-2000:pt-24 from-2000:text-[2rem] upto-768:flex-col-reverse upto-768:gap-2 upto-768:px-4 upto-768:pt-20 upto-768:pb-4 upto-492:text-[0.95rem]"
       id="Home"
     >
       {/* The hero only slides in (no fade) so it is painted right away */}
