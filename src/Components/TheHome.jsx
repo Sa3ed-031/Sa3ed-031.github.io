@@ -3,7 +3,7 @@ import Reveal from "./Reveal";
 import Button from "./ui/Button";
 import Typewriter from "./Typewriter";
 import SocialLinks from "./SocialLinks";
-import MyCV from "/Saeed-Al-Haj-Hussein-resume.pdf";
+// import MyCV from "/Saeed-Al-Haj-Hussein-resume.pdf";
 import MyProfile from "../assets/images/profile.webp";
 
 const techStack = ["React", "Next.js", "TypeScript", "Tailwind"];
@@ -62,7 +62,12 @@ const TheHome = () => {
           </Button>
         </div>
         <div>
-          <Button as="a" href={MyCV} download className="inline-block">
+          <Button
+            as="a"
+            href="/Saeed-Al-Haj-Hussein-resume.pdf"
+            download
+            className="inline-block"
+          >
             Download CV
           </Button>
         </div>
