@@ -27,7 +27,7 @@ const timeline = [
     date: "2026",
     head: "Real-World Projects",
     content:
-      "Built Rennello (team platform with role-based access), ZMovie and business websites. Currently learning TypeScript and building a real-time chat app with Firebase.",
+      "Built Rennello (team platform with role-based access), business websites, and a reusable landing page template with Next.js and TypeScript.",
   },
 ];
 

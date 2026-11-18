@@ -4,16 +4,34 @@ import whatsapp from "../assets/images/screenshots/whatsapp-clone-screenshot.jpg
 import carpentry from "../assets/images/screenshots/archi-carpenter-screenshot.jpg";
 import rennello from "../assets/images/screenshots/rennello-screenshot.jpg";
 import zmovie from "../assets/images/screenshots/zmovie-screenshot.jpg";
+import landing from "../assets/images/screenshots/menu-landing-screenshot.jpg";
 
 const projectsList = [
+  {
+    id: "landing-template",
+    title: "Landing Template",
+    subtitle: "Next.js Landing Page Template",
+    teamSize: null,
+    src: landing,
+    live: "https://sa3ed-031.github.io/menu-landing/",
+    code: "https://github.com/Sa3ed-031/landing-template",
+    tech: ["Next.js", "TypeScript", "Tailwind", "Motion", "GitHub Actions"],
+    description:
+      "Reusable landing page template where a new page takes three config files: theme, fonts and content. The live demo is a QR digital menu service page built with it.",
+    highlights: [
+      "Components hold no text, colors or fonts: everything comes from typed config files",
+      "Reorder or hide any section from the content file, with automatic alternating backgrounds",
+      "Full RTL & LTR support, static export and zero-config deploy with GitHub Actions",
+    ],
+    featured: true,
+  },
   {
     id: "rennello",
     title: "Rennello",
     subtitle: "Service Workshop Platform",
-    type: "team",
     teamSize: 6,
     src: rennello,
-    live: "https://rennello.netlify.app",
+    live: null,
     code: null,
     tech: [
       "React",
@@ -24,7 +42,7 @@ const projectsList = [
       "API",
       "Tailwind",
       "MUI",
-      "Framer Motion",
+      "Motion",
     ],
     description:
       "4th-year team project connecting customers with local service workshops, with role-based access for customers, owners and admins.",
@@ -39,10 +57,9 @@ const projectsList = [
     id: "zmovie",
     title: "ZMovie",
     subtitle: "Movie & TV Discovery Platform",
-    type: "solo",
     teamSize: null,
     src: zmovie,
-    live: "https://sa3ed-zmovie.netlify.app",
+    live: null,
     code: "https://github.com/Sa3ed-031/zmovie",
     tech: [
       "React",
@@ -52,7 +69,6 @@ const projectsList = [
       "API",
       "Tailwind",
       "MUI",
-      "Styled Components",
     ],
     description:
       "Movie and TV discovery platform powered by the TMDB API, with search, filters, trailers and a personal watchlist.",
@@ -67,7 +83,6 @@ const projectsList = [
     id: "archi-carpenter",
     title: "Archi Carpenter",
     subtitle: "Business Website Concept",
-    type: "solo",
     teamSize: null,
     src: carpentry,
     live: "https://sa3ed-archi-carpenter.netlify.app",
@@ -83,10 +98,28 @@ const projectsList = [
     featured: false,
   },
   {
+    id: "tech-insight",
+    title: "Tech Insight",
+    subtitle: "Tech Articles Blog",
+    teamSize: null,
+    src: articles,
+    live: "https://sa3ed-tech-insights-articles.netlify.app",
+    code: "https://github.com/Sa3ed-031/tech-insight-articles",
+    tech: ["React", "React Router", "Context API", "CSS", "CSS Modules", "API"],
+    description:
+      "Responsive tech blog powered by the DEV Community API, with list and grid views, bookmarks, filters, pagination, light/dark mode, and About & Contact pages.",
+    highlights: [
+      "Live articles and full article pages from the DEV Community API, credited to their authors",
+      "List and grid views, filters, pagination and bookmarks with a live counter",
+      "Light/dark mode with CSS variables, and per-component CSS Modules",
+      "About, Contact and 404 pages, with an accessible, validated contact form that opens a ready-to-send email",
+    ],
+    featured: false,
+  },
+  {
     id: "whatsapp-clone",
     title: "WhatsApp Clone",
     subtitle: "Chat App UI Clone",
-    type: "solo",
     teamSize: null,
     src: whatsapp,
     live: "https://sa3ed-chatsapp.netlify.app",
@@ -98,25 +131,6 @@ const projectsList = [
       "10+ screens on a client-side data model",
       "Group creation with broadcasting",
       "SHA-256 password hashing",
-    ],
-    featured: false,
-  },
-  {
-    id: "tech-insight",
-    title: "Tech Insight",
-    subtitle: "Tech Articles Blog",
-    type: "solo",
-    teamSize: null,
-    src: articles,
-    live: "https://sa3ed-tech-insights-articles.netlify.app",
-    code: "https://github.com/Sa3ed-031/tech-insight-articles",
-    tech: ["React", "React Router", "Context API", "CSS Modules", "API"],
-    description:
-      "Responsive tech blog powered by the DEV Community API, with list and grid views, bookmarks, filters, pagination and light/dark mode.",
-    highlights: [
-      "Live articles and full article pages from the DEV Community API, credited to their authors",
-      "List and grid views, filters, pagination and bookmarks with a live counter",
-      "Light/dark mode with CSS variables, and per-component CSS Modules",
     ],
     featured: false,
   },

@@ -10,6 +10,7 @@ import {
   SiHtml5,
   SiJavascript,
   SiMui,
+  SiNextdotjs,
   SiNetlify,
   SiReact,
   SiReactrouter,
@@ -26,15 +27,16 @@ export const skillGroups = [
     title: "Languages",
     skills: [
       { name: "JavaScript (ES6+)", icon: SiJavascript },
+      { name: "TypeScript", icon: SiTypescript },
       { name: "HTML5", icon: SiHtml5 },
       { name: "CSS3", icon: SiCss },
-      { name: "TypeScript", icon: SiTypescript, learning: true },
     ],
   },
   {
     title: "Frontend",
     skills: [
       { name: "React.js", icon: SiReact },
+      { name: "Next.js", icon: SiNextdotjs },
       { name: "Redux", icon: SiRedux },
       { name: "React Router", icon: SiReactrouter },
     ],

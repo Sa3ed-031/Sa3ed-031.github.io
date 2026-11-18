@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, m, useReducedMotion } from "motion/react";
-import clsx from "clsx";
 import { MdArrowBack, MdAutorenew } from "react-icons/md";
+import clsx from "clsx";
+
 import Reveal from "./Reveal";
 import Card from "./ui/Card";
 import Chip from "./ui/Chip";
@@ -23,29 +24,62 @@ const sortedProjects = [...projectsList].sort(
   (a, b) => Number(b.featured) - Number(a.featured),
 );
 
+// A project is a team project when it has a team size
+const isTeam = (project) => project.teamSize !== null;
+
 const typeFilters = [
   { value: "all", label: "All", count: projectsList.length },
   {
     value: "team",
     label: "Team",
-    count: projectsList.filter((p) => p.type === "team").length,
+    count: projectsList.filter(isTeam).length,
   },
   {
     value: "solo",
     label: "Solo",
-    count: projectsList.filter((p) => p.type === "solo").length,
+    count: projectsList.filter((p) => !isTeam(p)).length,
   },
 ];
 
-// Every technology once, the most used first
+// Every technology once
 const techCounts = projectsList
   .flatMap((p) => p.tech)
   .reduce(
     (counts, tech) => ({ ...counts, [tech]: (counts[tech] || 0) + 1 }),
     {},
   );
+// Main languages and frameworks first, then libraries and tools
+const techOrder = [
+  "React",
+  "Next.js",
+  "JavaScript",
+  "TypeScript",
+  "React Router",
+  "Tailwind",
+  "API",
+  "Redux",
+  "Context API",
+  "CSS",
+  "CSS Modules",
+  "MUI",
+  "Framer Motion",
+  "GSAP",
+  "Axios",
+  "Local Storage",
+  "GitHub Actions",
+];
+
+// Techs missing from the list go last
+const techRank = (tech) => {
+  const index = techOrder.indexOf(tech);
+  return index === -1 ? techOrder.length : index;
+};
+
 const techOptions = Object.keys(techCounts).sort(
-  (a, b) => techCounts[b] - techCounts[a] || a.localeCompare(b),
+  (a, b) =>
+    techRank(a) - techRank(b) ||
+    techCounts[b] - techCounts[a] ||
+    a.localeCompare(b),
 );
 
 const TheProjects = () => {
@@ -58,7 +92,7 @@ const TheProjects = () => {
     () =>
       sortedProjects.filter(
         (project) =>
-          (type === "all" || project.type === type) &&
+          (type === "all" || (type === "team") === isTeam(project)) &&
           selectedTech.every((tech) => project.tech.includes(tech)),
       ),
     [type, selectedTech],
@@ -203,7 +237,7 @@ const ProjectCard = ({ project, flipped, onFlip }) => {
   // Only move focus after a click, not when the filters reset the card
   const focusAfterFlip = useRef(false);
 
-  const { id, title, subtitle, type, teamSize, src, highlights, description } =
+  const { id, title, subtitle, teamSize, src, highlights, description } =
     project;
 
   useEffect(() => {
@@ -224,7 +258,7 @@ const ProjectCard = ({ project, flipped, onFlip }) => {
   );
 
   return (
-    <div className="h-full perspective-[1200px]">
+    <div className="h-full perspective-distant">
       <div
         className={clsx(
           "relative grid h-full transition-transform duration-600 ease-in-out transform-3d",
@@ -262,9 +296,11 @@ const ProjectCard = ({ project, flipped, onFlip }) => {
                   {subtitle}
                 </p>
               </div>
-              <span className="shrink-0 rounded-full bg-indigo-brand px-[0.7rem] py-[0.15rem] text-[0.8rem] font-bold text-cloud">
-                {type === "team" ? `Team of ${teamSize}` : "Solo"}
-              </span>
+              {teamSize && (
+                <span className="shrink-0 rounded-full bg-indigo-brand px-[0.7rem] py-[0.15rem] text-[0.8rem] font-bold text-cloud">
+                  Team of {teamSize}
+                </span>
+              )}
             </div>
 
             <p className="text-cloud">{description}</p>
@@ -304,7 +340,7 @@ const ProjectCard = ({ project, flipped, onFlip }) => {
         >
           <h3 className="text-2xl font-extrabold text-cloud">{title}</h3>
           <h4 className="text-sm font-bold tracking-wider text-lavender uppercase">
-            {type === "team" ? "My role" : "Highlights"}
+            {teamSize ? "My role" : "Highlights"}
           </h4>
           <ul className="flex list-disc flex-col gap-2 pl-5 text-cloud">
             {highlights.map((highlight) => (
@@ -369,18 +405,20 @@ const cardButton =
 const ProjectLinks = ({ project: { title, live, code } }) => {
   return (
     <>
-      <a
-        href={live}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={`Open ${title} live demo`}
-        className={clsx(
-          cardButton,
-          "border-indigo-brand bg-indigo-brand text-cloud hover:brightness-115",
-        )}
-      >
-        Live Demo
-      </a>
+      {live && (
+        <a
+          href={live}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Open ${title} live demo`}
+          className={clsx(
+            cardButton,
+            "border-indigo-brand bg-indigo-brand text-cloud hover:brightness-115",
+          )}
+        >
+          Live Demo
+        </a>
+      )}
       {code && (
         <a
           href={code}

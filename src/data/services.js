@@ -7,7 +7,7 @@ const servicesList = [
   {
     title: "Frontend Development",
     description:
-      "I develop clean, component-based interfaces using React.js, with a focus on organized project structure and reusable logic. My ZMovie website project reflects this.",
+      "I develop clean, component-based interfaces using React.js, with a focus on organized project structure and reusable logic. My Next.js landing page template reflects this.",
   },
   {
     title: "Landing Pages Design",

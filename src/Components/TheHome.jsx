@@ -3,10 +3,10 @@ import Reveal from "./Reveal";
 import Button from "./ui/Button";
 import Typewriter from "./Typewriter";
 import SocialLinks from "./SocialLinks";
-import myCV from "../assets/Sa3ed-CV.pdf";
+import myCV from "../assets/Saeed-Al-Haj-Hussein-resume.pdf";
 import MyProfile from "../assets/images/profile.webp";
 
-const techStack = ["React", "Tailwind", "Firebase", "Redux", "MUI"];
+const techStack = ["React", "Next.js", "TypeScript", "Tailwind"];
 const roles = ["Front-End Developer", "React Developer", "Web Designer"];
 
 const heroButtonSize =
@@ -34,8 +34,8 @@ const TheHome = () => {
 
         <p className="leading-[1.3] tracking-[1px]">
           Front-End Developer helping businesses launch fast, modern websites
-          and web apps. I build with React, Tailwind and Firebase, with a focus
-          on clean design and smooth user experience.
+          and web apps. I build with React, Next.js, TypeScript and Tailwind,
+          with a focus on clean design and smooth user experience.
         </p>
 
         <ul className="flex flex-wrap gap-2">
