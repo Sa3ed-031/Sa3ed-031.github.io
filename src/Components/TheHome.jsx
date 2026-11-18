@@ -3,7 +3,7 @@ import Reveal from "./Reveal";
 import Button from "./ui/Button";
 import Typewriter from "./Typewriter";
 import SocialLinks from "./SocialLinks";
-import myCV from "../assets/Saeed-Al-Haj-Hussein-resume.pdf";
+import MyCV from "/Saeed-Al-Haj-Hussein-resume.pdf";
 import MyProfile from "../assets/images/profile.webp";
 
 const techStack = ["React", "Next.js", "TypeScript", "Tailwind"];
@@ -15,14 +15,14 @@ const heroButtonSize =
 const TheHome = () => {
   return (
     <div
-      className="relative flex items-center justify-evenly gap-7 overflow-hidden px-8 pt-22 from-1537:justify-center from-1537:gap-[5%] from-1537:pt-20 from-1537:text-[1.7rem] from-2000:pt-24 from-2000:text-[2rem] upto-768:flex-col-reverse upto-768:gap-2 upto-768:px-4 upto-768:pt-20 upto-768:pb-4 upto-492:text-[0.95rem]"
+      className="relative flex items-center justify-evenly gap-7 overflow-hidden px-8 pt-22 max-lg:flex-col-reverse max-lg:gap-2 max-lg:px-4 max-lg:pt-20 max-lg:pb-4 from-1537:justify-center from-1537:gap-[5%] from-1537:pt-20 from-1537:text-[1.7rem] from-2000:pt-24 from-2000:text-[2rem] upto-492:text-[0.95rem]"
       id="Home"
     >
       {/* The hero only slides in (no fade) so it is painted right away */}
       <Reveal
         direction="left"
         fade={false}
-        className="relative flex h-full w-1/2 flex-col justify-center gap-2 text-cloud from-1537:gap-4 from-2000:gap-5 upto-932:w-[45%] upto-768:w-full upto-492:gap-[0.6rem]"
+        className="relative flex h-full w-1/2 flex-col justify-center gap-2 text-cloud max-lg:w-full max-lg:max-w-2xl from-1537:gap-4 from-2000:gap-5 upto-492:gap-[0.6rem]"
       >
         <h1 className="text-[3rem] leading-[1.2] text-balance from-2000:text-[4rem] upto-492:text-[2.2rem] upto-434:text-[2rem] upto-380:text-[1.85rem]">
           Hi, I'm <span className="text-lavender">Saeed Al-Haj Hussein</span>
@@ -62,7 +62,7 @@ const TheHome = () => {
           </Button>
         </div>
         <div>
-          <Button as="a" href={myCV} download className="inline-block">
+          <Button as="a" href={MyCV} download className="inline-block">
             Download CV
           </Button>
         </div>
@@ -71,7 +71,7 @@ const TheHome = () => {
       <Reveal
         direction="right"
         fade={false}
-        className="relative flex h-full w-fit flex-col items-center justify-center py-10 upto-932:w-[55%] upto-768:w-full"
+        className="relative flex h-full w-fit flex-col items-center justify-center py-10 max-lg:w-full"
       >
         <div className="relative grid place-items-center">
           <div

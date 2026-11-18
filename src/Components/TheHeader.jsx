@@ -7,8 +7,8 @@ const TheHeader = ({
   setShowDropDownHeader,
 }) => {
   return (
-    <header className="fixed top-0 right-0 left-0 z-10 flex w-full justify-around backdrop-blur-[30px] upto-768:justify-between upto-655:px-4">
-      <div className="p-4 text-[1.1rem] font-bold text-cloud hover:scale-108 from-1537:text-[2rem] upto-768:pr-0">
+    <header className="fixed top-0 right-0 left-0 z-10 flex w-full justify-around backdrop-blur-[30px] max-md:justify-between upto-655:px-4">
+      <div className="p-4 text-[1.1rem] font-bold text-cloud hover:scale-108 max-md:pr-0 from-1537:text-[2rem]">
         <span className="text-lavender">Saeed</span> Al-Haj Hussein
       </div>
 
@@ -17,7 +17,7 @@ const TheHeader = ({
         type="button"
         aria-label="Toggle navigation menu"
         aria-expanded={showDropDownHeader}
-        className="hidden cursor-pointer rounded-full p-2 text-[1.5rem] text-indigo-brand transition-all duration-600 ease-in-out hover:bg-black/4 upto-768:block"
+        className="hidden cursor-pointer rounded-full p-2 text-[1.5rem] text-indigo-brand transition-all duration-600 ease-in-out hover:bg-black/4 max-md:block"
         onClick={() => {
           setShowDropDownHeader((prev) => !prev);
         }}
@@ -27,8 +27,7 @@ const TheHeader = ({
 
       <div
         className={clsx(
-          "relative flex gap-3.5 upto-768:gap-0",
-          // Below 655px the links become a dropdown under the header
+          "relative flex gap-3.5 max-md:gap-0",
           "max-md:absolute max-md:top-full max-md:right-0 max-md:w-full max-md:flex-col max-md:gap-2 max-md:overflow-hidden max-md:border-3 max-md:border-indigo-brand/50 max-md:bg-surface/92",
           showDropDownHeader ? "max-md:flex" : "max-md:hidden",
         )}

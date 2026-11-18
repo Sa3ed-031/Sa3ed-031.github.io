@@ -62,7 +62,7 @@ const techOrder = [
   "CSS",
   "CSS Modules",
   "MUI",
-  "Framer Motion",
+  "Motion",
   "GSAP",
   "Axios",
   "Local Storage",
